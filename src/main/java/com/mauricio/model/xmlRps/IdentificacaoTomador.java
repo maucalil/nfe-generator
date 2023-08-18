@@ -1,4 +1,4 @@
-package com.mauricio.schemas;
+package com.mauricio.model.xmlRps;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -8,16 +8,16 @@ import lombok.Getter;
 import lombok.Setter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "tcIdentificacaoPrestador", propOrder = {
+@XmlType(name = "tcIdentificacaoTomador", propOrder = {
         "cpfCnpj",
         "inscricaoMunicipal"
 })
 @Getter
 @Setter
-public class IdentificacaoPrestador {
+public class IdentificacaoTomador {
     @XmlElement(name = "CpfCnpj")
-    protected CpfCnpj cpfCnpj;
+    private CpfCnpj cpfCnpj;
 
     @XmlElement(name = "InscricaoMunicipal")
-    protected String inscricaoMunicipal;
+    private String inscricaoMunicipal;
 }

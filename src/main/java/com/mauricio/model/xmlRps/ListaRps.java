@@ -1,4 +1,4 @@
-package com.mauricio.schemas;
+package com.mauricio.model.xmlRps;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -18,11 +18,4 @@ import java.util.List;
 public class ListaRps {
     @XmlElement(name = "Rps", required = true)
     private List<DeclaracaoPrestacaoServico> rps;
-
-    @Override
-    public String toString() {
-        return "ListaRps{" +
-                "rps=" + rps +
-                '}';
-    }
 }

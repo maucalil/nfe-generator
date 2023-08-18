@@ -1,12 +1,11 @@
-package com.mauricio.model;
+package com.mauricio.model.xmlRps;
 
-import com.mauricio.schemas.CpfCnpj;
-import com.mauricio.schemas.ListaRps;
 import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigInteger;
 
@@ -21,6 +20,7 @@ import java.math.BigInteger;
 })
 @Getter
 @Setter
+@ToString
 public class LoteRps {
     @XmlElement(name = "NumeroLote", required = true)
     @XmlSchemaType(name = "nonNegativeInteger")
@@ -30,7 +30,7 @@ public class LoteRps {
     private CpfCnpj cpfCnpj;
 
     @XmlElement(name = "InscricaoMunicipal")
-    private String inscricaoMunicipal;
+    private String inscricaoMunicipal; // do prestador
 
     @XmlElement(name = "QuantidadeRps")
     private int quantidadeRps;
@@ -44,21 +44,4 @@ public class LoteRps {
     @XmlAttribute(name = "versao", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     private String versao;
-
-    @Override
-    public String toString() {
-        return "LoteRps{" +
-                "numeroLote=" + numeroLote +
-                ", cpfCnpj=" + cpfCnpj.getCnpj() +
-                ", inscricaoMunicipal='" + inscricaoMunicipal + '\'' +
-                ", quantidadeRps=" + quantidadeRps +
-                ", listaRps=" + listaRps +
-                ", id='" + id + '\'' +
-                ", versao='" + versao + '\'' +
-                '}';
-    }
-
-    public static LoteRps fromTxtFile(String filePath) {
-        throw new UnsupportedOperationException("Unimplemented");
-    }
 }

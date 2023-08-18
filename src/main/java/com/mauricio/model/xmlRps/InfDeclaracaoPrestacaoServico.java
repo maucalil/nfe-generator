@@ -1,4 +1,4 @@
-package com.mauricio.schemas;
+package com.mauricio.model.xmlRps;
 
 import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
@@ -30,13 +30,13 @@ public class InfDeclaracaoPrestacaoServico {
     private XMLGregorianCalendar competencia;
 
     @XmlElement(name = "Servico", required = true)
-    private String servico; // TODO: change to DadosServico
+    private DadosServico servico;
 
     @XmlElement(name = "Prestador", required = true)
-    private IdentificacaoPrestador prestador; // TODO: change to IdentificacaoPrestador
+    private IdentificacaoPrestador prestador;
 
     @XmlElement(name = "Tomador")
-    private String tomador; // TODO: change to DadosTomador
+    private DadosTomador tomador;
 
 //    @XmlElement(name = "Intermediario")
 //    private String intermediario; // TODO: change to DadosIntermediario

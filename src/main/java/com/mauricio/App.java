@@ -1,7 +1,7 @@
 package com.mauricio;
 
-import com.mauricio.model.LoteRps;
-import com.mauricio.schemas.*;
+import com.mauricio.model.xmlRps.LoteRps;
+import com.mauricio.model.xmlRps.*;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -50,6 +50,7 @@ public class App {
 
         loteRps.setId("5402");
         loteRps.setVersao("2.01");
+        System.out.println(loteRps);
 
         jaxbObjectToXML(loteRps);
     }

@@ -1,8 +1,9 @@
-package com.mauricio.schemas;
+package com.mauricio.model.xmlRps;
 
 import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -15,6 +16,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 @Getter
 @Setter
+@ToString
 public class Rps {
     @XmlElement(name = "IdentificacaoRps", required = true)
     private IdentificacaoRps identificacaoRps;
@@ -31,14 +33,4 @@ public class Rps {
 
     @XmlAttribute(name = "Id")
     private String id;
-
-    @Override
-    public String toString() {
-        return "Rps{" +
-                "identificacaoRps=" + identificacaoRps +
-                ", dataEmissao=" + dataEmissao +
-                ", status=" + status +
-                ", id='" + id + '\'' +
-                '}';
-    }
 }
