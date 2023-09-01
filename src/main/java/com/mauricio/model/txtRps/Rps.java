@@ -9,5 +9,7 @@ public class Rps {
     private String dataEmissao; // AAAAMMDD
     private char situacao;
 
+    private DadosServico dadosServico;
+
 
 }
