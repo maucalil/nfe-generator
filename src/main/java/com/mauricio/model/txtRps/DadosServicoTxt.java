@@ -2,7 +2,7 @@ package com.mauricio.model.txtRps;
 
 import com.mauricio.model.xmlRps.DadosTomador;
 
-public class DadosServico {
+public class DadosServicoTxt {
     private String codigoServico; // 5 digitos
     private ValoresServico valoresServico;
     private CargaTributaria cargaTributaria;
