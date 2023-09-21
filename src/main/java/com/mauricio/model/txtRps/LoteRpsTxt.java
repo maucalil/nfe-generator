@@ -19,13 +19,16 @@ public class LoteRpsTxt {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                if (line.startsWith(TipoRegistroEnum.CABECALHO.getCodigo())) {
+                int codigo = Integer.parseInt(line.substring(0, 1));
+
+                if (codigo == TipoRegistroEnum.CABECALHO.getCodigo()) {
                     Cabecalho cabecalho = Cabecalho.fromString(line);
                     System.out.println(cabecalho);
-                } else if (line.startsWith(TipoRegistroEnum.DETALHE.getCodigo())) {
-                    RpsTxt rps = new RpsTxt();
+                } else if (codigo == TipoRegistroEnum.DETALHE.getCodigo()) {
+                    RpsTxt rps = RpsTxt.fromString(line);
+                    System.out.println(rps);
                     lote.rpsList.add(rps);
-                } else if (line.startsWith(TipoRegistroEnum.RODAPE.getCodigo())) {
+                } else if (codigo == TipoRegistroEnum.RODAPE.getCodigo()) {
                     Rodape rodape = Rodape.fromString(line);
                     System.out.println(rodape);
                 }

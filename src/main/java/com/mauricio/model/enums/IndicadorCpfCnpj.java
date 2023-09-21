@@ -5,10 +5,10 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum TipoRegistroEnum {
-    CABECALHO(1, "Cabecalho"),
-    DETALHE(6, "Detalhe"),
-    RODAPE(9, "Rodape");
+public enum IndicadorCpfCnpj {
+    CPF(1, "CPF"),
+    CNPJ(2, "CNPJ"),
+    SEM_CPF(3, "CPF nao informado");
 
     private final int codigo;
     private final String descricao;
