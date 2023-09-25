@@ -1,8 +1,7 @@
 package com.mauricio;
 
-import com.mauricio.model.txtRps.LoteRpsTxt;
-import com.mauricio.model.xmlRps.LoteRps;
-import com.mauricio.model.xmlRps.*;
+import com.mauricio.domain.rpsSP.LoteRpsTxt;
+import com.mauricio.domain.rpsPontal.LoteRps;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -12,8 +11,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.datatype.DatatypeFactory;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigInteger;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.*;

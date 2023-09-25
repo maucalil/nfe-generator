@@ -1,14 +1,14 @@
-package com.mauricio.model.enums;
+package com.mauricio.domain.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum IndicadorCpfCnpj {
-    CPF(1, "CPF"),
-    CNPJ(2, "CNPJ"),
-    SEM_CPF(3, "CPF nao informado");
+public enum IssRetido {
+    TOMADOR(1, "ISS retido pelo tomador"),
+    NAO_POSSUI(2, "Nota fiscal sem ISS retido"),
+    INTERMEDIARIO(3, "ISS retido pelo intermediario");
 
     private final int codigo;
     private final String descricao;

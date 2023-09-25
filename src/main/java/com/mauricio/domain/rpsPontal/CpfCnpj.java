@@ -1,6 +1,6 @@
-package com.mauricio.model.xmlRps;
+package com.mauricio.domain.rpsPontal;
 
-import com.mauricio.model.enums.IndicadorCpfCnpj;
+import com.mauricio.domain.enums.IndicadorCpfCnpj;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;

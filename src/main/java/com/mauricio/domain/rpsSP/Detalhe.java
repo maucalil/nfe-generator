@@ -1,4 +1,4 @@
-package com.mauricio.model.txtRps;
+package com.mauricio.domain.rpsSP;
 
 public class Detalhe {
     private Byte tipoRegistro;

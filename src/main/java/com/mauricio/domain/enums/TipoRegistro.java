@@ -1,14 +1,14 @@
-package com.mauricio.model.enums;
+package com.mauricio.domain.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum IssRetido {
-    TOMADOR(1, "ISS retido pelo tomador"),
-    NAO_POSSUI(2, "Nota fiscal sem ISS retido"),
-    INTERMEDIARIO(3, "ISS retido pelo intermediario");
+public enum TipoRegistro {
+    CABECALHO(1, "Cabecalho"),
+    DETALHE(6, "Detalhe"),
+    RODAPE(9, "Rodape");
 
     private final int codigo;
     private final String descricao;

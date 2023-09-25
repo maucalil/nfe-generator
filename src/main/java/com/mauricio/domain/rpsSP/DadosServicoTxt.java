@@ -1,7 +1,7 @@
-package com.mauricio.model.txtRps;
+package com.mauricio.domain.rpsSP;
 
-import com.mauricio.model.enums.IssRetido;
-import com.mauricio.model.xmlRps.DadosTomador;
+import com.mauricio.domain.enums.IssRetido;
+import com.mauricio.domain.rpsPontal.DadosTomador;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

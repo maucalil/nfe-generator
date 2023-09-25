@@ -1,6 +1,6 @@
-package com.mauricio.model.txtRps;
+package com.mauricio.domain.rpsSP;
 
-import com.mauricio.model.enums.TipoRegistro;
+import com.mauricio.domain.enums.TipoRegistro;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
