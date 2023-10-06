@@ -1,20 +1,21 @@
-package com.mauricio.model.xmlRps;
+package com.mauricio.domain.rpsPontal;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "tcIdentificacaoTomador", propOrder = {
+@XmlType(name = "tcIdentificacaoPrestador", propOrder = {
         "cpfCnpj",
         "inscricaoMunicipal"
 })
 @Getter
 @Setter
-public class IdentificacaoTomador {
+public class IdentificacaoPrestador {
     @XmlElement(name = "CpfCnpj")
     private CpfCnpj cpfCnpj;
 

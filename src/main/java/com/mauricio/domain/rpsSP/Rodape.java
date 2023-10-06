@@ -1,4 +1,4 @@
-package com.mauricio.model.txtRps;
+package com.mauricio.domain.rpsSP;
 
 import lombok.Getter;
 import lombok.Setter;

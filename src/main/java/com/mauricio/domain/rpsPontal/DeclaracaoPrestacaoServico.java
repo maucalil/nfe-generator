@@ -1,4 +1,4 @@
-package com.mauricio.model.xmlRps;
+package com.mauricio.domain.rpsPontal;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
