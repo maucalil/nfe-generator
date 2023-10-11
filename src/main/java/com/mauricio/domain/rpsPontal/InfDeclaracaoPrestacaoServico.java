@@ -1,5 +1,8 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.enums.SimNao;
+import com.mauricio.domain.rpsSP.DadosServicoSp;
+import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,12 +50,27 @@ public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "RegimeEspecialTributacao")
     private Byte regimeEspecialTributacao;
 
-    @XmlElement(name = "OptanteSimplesNacional")
-    private byte optanteSimplesNacional;
+    @XmlElement(name = "OptanteSimplesNacional", required = true)
+    private SimNao optanteSimplesNacional;
 
-    @XmlElement(name = "IncentivoFiscal")
-    private byte incentivoFiscal;
+    @XmlElement(name = "IncentivoFiscal", required = true)
+    private SimNao incentivoFiscal;
 
     @XmlAttribute(name = "Id")
     private String id;
+
+    public static InfDeclaracaoPrestacaoServico fromSpModel(RpsSp rpsSp) {
+//        Rps rps = Rps.fromSpModel(rpsSp);
+        DadosServico servico = DadosServico.fromSpModel(rpsSp.getDadosServico());
+
+        IdentificacaoPrestador prestador = new IdentificacaoPrestador();
+
+        InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico = new InfDeclaracaoPrestacaoServico();
+        infDeclaracaoPrestacaoServico.setServico(servico);
+        infDeclaracaoPrestacaoServico.setPrestador(prestador);
+        infDeclaracaoPrestacaoServico.setOptanteSimplesNacional(SimNao.SIM);
+        infDeclaracaoPrestacaoServico.setIncentivoFiscal(SimNao.NAO);
+
+        return infDeclaracaoPrestacaoServico;
+    }
 }

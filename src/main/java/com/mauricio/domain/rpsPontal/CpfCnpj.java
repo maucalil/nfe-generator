@@ -15,7 +15,6 @@ import lombok.ToString;
         "cnpj"
 })
 @Getter
-@Setter
 @ToString
 public class CpfCnpj {
     @XmlElement(name = "Cpf")
@@ -33,11 +32,11 @@ public class CpfCnpj {
         if (codigo == IndicadorCpfCnpj.CPF.getCodigo()) {
             String cpf = line.substring(77, 87);
             cpfCnpj.setCpf(cpf);
-            cpfCnpj.setPJ(false);
+            cpfCnpj.setIsPJ(false);
         } else if (codigo == IndicadorCpfCnpj.CNPJ.getCodigo()) {
             String cnpj = line.substring(73, 87);
             cpfCnpj.setCnpj(cnpj);
-            cpfCnpj.setPJ(true);
+            cpfCnpj.setIsPJ(true);
         } else if (codigo == IndicadorCpfCnpj.SEM_CPF.getCodigo()) {
             // TODO ver  o que fazer aqui
         }
@@ -50,5 +49,19 @@ public class CpfCnpj {
         boolean hasCnpj = this.getCnpj() != null;
 
         return !(hasCpf || hasCnpj);
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+        this.isPJ = false;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+        this.isPJ = true;
+    }
+
+    public void setIsPJ(boolean isPJ) {
+        this.isPJ = isPJ;
     }
 }

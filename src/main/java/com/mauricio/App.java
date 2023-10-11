@@ -1,7 +1,8 @@
 package com.mauricio;
 
-import com.mauricio.domain.rpsSP.LoteRpsTxt;
+import com.mauricio.domain.rpsSP.LoteRpsSp;
 import com.mauricio.domain.rpsPontal.LoteRps;
+import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -17,45 +18,6 @@ import java.util.*;
 
 public class App {
     public static void main(String[] args) throws IOException {
-//
-//        CpfCnpj cpfCnpj = new CpfCnpj();
-//        cpfCnpj.setCnpj("01001001000113");
-//
-//        LoteRps loteRps = new LoteRps();
-//        loteRps.setNumeroLote(BigInteger.ONE);
-//        loteRps.setCpfCnpj(cpfCnpj);
-//        loteRps.setInscricaoMunicipal("1.000.10");
-//        loteRps.setQuantidadeRps(1);
-//
-//        IdentificacaoRps identificacaoRps = new IdentificacaoRps();
-//        identificacaoRps.setNumero(BigInteger.valueOf(5402));
-//        identificacaoRps.setSerie("UNICA");
-//        identificacaoRps.setTipo(Byte.parseByte("1"));
-//
-//        Rps rps = new Rps();
-//        rps.setIdentificacaoRps(identificacaoRps);
-//        GregorianCalendar date = new GregorianCalendar(2013, Calendar.DECEMBER, 10);
-//        rps.setDataEmissao(retrieveXMLGregorianCalendar(date));
-//        rps.setStatus(Byte.parseByte("1"));
-//        rps.setId("optional");
-//
-//        InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico = new InfDeclaracaoPrestacaoServico();
-//        infDeclaracaoPrestacaoServico.setRps(rps);
-//        infDeclaracaoPrestacaoServico.setCompetencia(retrieveXMLGregorianCalendar(date));
-//        infDeclaracaoPrestacaoServico.setId("rps5402UNICA");
-//
-//        DeclaracaoPrestacaoServico declaracaoPrestacaoServico = new DeclaracaoPrestacaoServico();
-//        declaracaoPrestacaoServico.setInfDeclaracaoPrestacaoServico(infDeclaracaoPrestacaoServico);
-//
-//        ListaRps listaRps = new ListaRps();
-//        listaRps.setRps(List.of(declaracaoPrestacaoServico));
-//        loteRps.setListaRps(listaRps);
-//
-//        loteRps.setId("5402");
-//        loteRps.setVersao("2.01");
-//        System.out.println(loteRps);
-//
-//        jaxbObjectToXML(loteRps);
         ClassLoader classLoader = App.class.getClassLoader();
         String filePath = null;
         try {
@@ -64,7 +26,12 @@ public class App {
             throw new RuntimeException(e);
         }
 
-        LoteRpsTxt loteRpsTxt = LoteRpsTxt.fromTxtFile(filePath);
+        LoteRpsSp loteRpsSp = LoteRpsSp.fromTxtFile(filePath);
+        for (RpsSp rps : loteRpsSp.getRpsList()) {
+            System.out.println(rps);
+        }
+
+        LoteRps loteRps = LoteRps.fromLoteRpsSp(loteRpsSp);
     }
 
     private static XMLGregorianCalendar retrieveXMLGregorianCalendar(GregorianCalendar date) {

@@ -21,4 +21,12 @@ public class IdentificacaoPrestador {
 
     @XmlElement(name = "InscricaoMunicipal")
     private String inscricaoMunicipal;
+
+    public IdentificacaoPrestador() {
+        CpfCnpj cpfCnpj = new CpfCnpj();
+        cpfCnpj.setCnpj("00000000000");
+
+        this.cpfCnpj = cpfCnpj;
+        this.inscricaoMunicipal = "1902";
+    }
 }
