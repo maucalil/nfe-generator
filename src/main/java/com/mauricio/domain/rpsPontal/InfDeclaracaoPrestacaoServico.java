@@ -1,7 +1,6 @@
 package com.mauricio.domain.rpsPontal;
 
 import com.mauricio.domain.enums.SimNao;
-import com.mauricio.domain.rpsSP.DadosServicoSp;
 import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
@@ -26,7 +25,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @Setter
 public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "Rps")
-    private Rps rps; // InfRps talvez
+    private Rps rps;
 
     @XmlElement(name = "Competencia", required = true)
     @XmlSchemaType(name = "date")
@@ -41,14 +40,8 @@ public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "Tomador")
     private DadosTomador tomador;
 
-//    @XmlElement(name = "Intermediario")
-//    private String intermediario; // TODO: change to DadosIntermediario
-
-//    @XmlElement(name = "ConstrucaoCivil")
-//    private String construcaoCivil; // TODO: change to DadosConstrucaoCivil
-
-    @XmlElement(name = "RegimeEspecialTributacao")
-    private Byte regimeEspecialTributacao;
+//    @XmlElement(name = "RegimeEspecialTributacao")
+//    private Byte regimeEspecialTributacao;
 
     @XmlElement(name = "OptanteSimplesNacional", required = true)
     private SimNao optanteSimplesNacional;
@@ -56,18 +49,21 @@ public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "IncentivoFiscal", required = true)
     private SimNao incentivoFiscal;
 
-    @XmlAttribute(name = "Id")
-    private String id;
+//    @XmlAttribute(name = "Id")
+//    private String id;
 
     public static InfDeclaracaoPrestacaoServico fromSpModel(RpsSp rpsSp) {
-//        Rps rps = Rps.fromSpModel(rpsSp);
+        Rps rps = Rps.fromSpModel(rpsSp);
+        DadosTomador tomador = rpsSp.getDadosServico().getDadosTomador();
         DadosServico servico = DadosServico.fromSpModel(rpsSp.getDadosServico());
 
         IdentificacaoPrestador prestador = new IdentificacaoPrestador();
 
         InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico = new InfDeclaracaoPrestacaoServico();
+        infDeclaracaoPrestacaoServico.setRps(rps);
         infDeclaracaoPrestacaoServico.setServico(servico);
         infDeclaracaoPrestacaoServico.setPrestador(prestador);
+        infDeclaracaoPrestacaoServico.setTomador(tomador);
         infDeclaracaoPrestacaoServico.setOptanteSimplesNacional(SimNao.SIM);
         infDeclaracaoPrestacaoServico.setIncentivoFiscal(SimNao.NAO);
 

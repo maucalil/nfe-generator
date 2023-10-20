@@ -1,5 +1,7 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.converters.StringConverter;
+import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,9 +30,17 @@ public class Rps {
     @XmlElement(name = "Status")
     private byte status;
 
-    @XmlElement(name = "RpsSubstituido")
-    private IdentificacaoRps rpsSubstituido;
+    public static Rps fromSpModel(RpsSp rpsSp) {
+        String dataEmissao = rpsSp.getDataEmissao();
 
-    @XmlAttribute(name = "Id")
-    private String id;
+        Rps rps = new Rps();
+        rps.setDataEmissao(StringConverter.toXMLGregorianCalendar(dataEmissao));
+        return rps;
+    }
+
+//    @XmlElement(name = "RpsSubstituido")
+//    private IdentificacaoRps rpsSubstituido;
+
+//    @XmlAttribute(name = "Id")
+//    private String id;
 }
