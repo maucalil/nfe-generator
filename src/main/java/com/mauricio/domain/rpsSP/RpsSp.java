@@ -1,5 +1,6 @@
 package com.mauricio.domain.rpsSP;
 
+import com.mauricio.domain.enums.TipoRps;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,7 +11,7 @@ import java.math.BigInteger;
 @Setter
 @ToString
 public class RpsSp {
-    private String tipo;
+    private TipoRps tipo;
     private String serie;
     private BigInteger numero;
     private String dataEmissao; // AAAAMMDD
@@ -18,11 +19,11 @@ public class RpsSp {
     private DadosServicoSp dadosServico;
 
     public static RpsSp fromString(String line) {
-        String tipo = line.substring(1, 6).trim();
         String serie = line.substring(6, 11).trim();
         String numero = line.substring(11, 23).trim();
         String dataEmissao = line.substring(23, 31).trim();
         char situacao = line.charAt(31);
+        TipoRps tipo = TipoRps.fromString(line.substring(1, 6).trim());
         DadosServicoSp dadosServico = DadosServicoSp.fromString(line);
 
         RpsSp rps = new RpsSp();

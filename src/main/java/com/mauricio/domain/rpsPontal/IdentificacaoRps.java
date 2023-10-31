@@ -1,8 +1,11 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.enums.TipoRps;
+import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigInteger;
 
@@ -14,6 +17,7 @@ import java.math.BigInteger;
 })
 @Getter
 @Setter
+@ToString
 public class IdentificacaoRps {
     @XmlElement(name = "Numero", required = true)
     @XmlSchemaType(name = "nonNegativeInteger")
@@ -23,5 +27,14 @@ public class IdentificacaoRps {
     private String serie;
 
     @XmlElement(name = "Tipo")
-    private byte tipo;
+    private TipoRps tipo;
+
+    public static IdentificacaoRps fromSpModel(RpsSp rpsSp) {
+        IdentificacaoRps identificacaoRps = new IdentificacaoRps();
+        identificacaoRps.setNumero(rpsSp.getNumero());
+        identificacaoRps.setSerie(rpsSp.getSerie());
+        identificacaoRps.setTipo(rpsSp.getTipo());
+
+        return identificacaoRps;
+    }
 }

@@ -7,6 +7,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tcDeclaracaoPrestacaoServico", propOrder = {
@@ -15,6 +16,7 @@ import lombok.Setter;
 })
 @Getter
 @Setter
+@ToString
 public class DeclaracaoPrestacaoServico {
     @XmlElement(name = "InfDeclaracaoPrestacaoServico", required = true)
     private InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico;
@@ -24,6 +26,10 @@ public class DeclaracaoPrestacaoServico {
 
     public static DeclaracaoPrestacaoServico fromSpModel(RpsSp rpsSp) {
         InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico = InfDeclaracaoPrestacaoServico.fromSpModel(rpsSp);
-        return null;
+
+        DeclaracaoPrestacaoServico declaracaoPrestacaoServico = new DeclaracaoPrestacaoServico();
+        declaracaoPrestacaoServico.setInfDeclaracaoPrestacaoServico(infDeclaracaoPrestacaoServico);
+
+        return declaracaoPrestacaoServico;
     }
 }

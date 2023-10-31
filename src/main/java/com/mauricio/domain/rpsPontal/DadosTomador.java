@@ -11,6 +11,7 @@ import lombok.ToString;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tcDadosTomador", propOrder = {
         "identificacaoTomador",
+        "inscricaoEstadual",
         "razaoSocial",
         "endereco",
         "contato"

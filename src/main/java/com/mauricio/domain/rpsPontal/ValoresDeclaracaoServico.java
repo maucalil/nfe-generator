@@ -53,7 +53,7 @@ public class ValoresDeclaracaoServico {
     private BigDecimal valorCsll;
 
     @XmlElement(name = "OutrasRetencoes")
-    private BigDecimal outrasRetencoes;
+    private BigDecimal outrasRetencoes; // TODO remover?
 
     @XmlElement(name = "ValorIss")
     private BigDecimal valorIss;
@@ -62,10 +62,10 @@ public class ValoresDeclaracaoServico {
     private BigDecimal aliquota;
 
     @XmlElement(name = "DescontoIncondicionado")
-    private BigDecimal descontoIncondicionado;
+    private BigDecimal descontoIncondicionado; // TODO remover?
 
     @XmlElement(name = "DescontoCondicionado")
-    private BigDecimal descontoCondicionado;
+    private BigDecimal descontoCondicionado; // TODO remover?
 
     public static ValoresDeclaracaoServico fromSpModel(ValoresServico valoresServico) {
 
@@ -87,7 +87,6 @@ public class ValoresDeclaracaoServico {
         valores.setValorIr(valorIr);
         valores.setValorCsll(valorCsll);
         valores.setAliquota(aliquota);
-        System.out.println(valores);
 
         return valores;
     }

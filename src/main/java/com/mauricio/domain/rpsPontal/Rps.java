@@ -1,6 +1,7 @@
 package com.mauricio.domain.rpsPontal;
 
 import com.mauricio.domain.converters.StringConverter;
+import com.mauricio.domain.enums.StatusRps;
 import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
         "identificacaoRps",
         "dataEmissao",
         "status",
-        "rpsSubstituido"
+//        "rpsSubstituido"
 })
 @Getter
 @Setter
@@ -28,13 +29,18 @@ public class Rps {
     private XMLGregorianCalendar dataEmissao;
 
     @XmlElement(name = "Status")
-    private byte status;
+    private StatusRps status;
 
     public static Rps fromSpModel(RpsSp rpsSp) {
+        IdentificacaoRps  identificacaoRps = IdentificacaoRps.fromSpModel(rpsSp);
         String dataEmissao = rpsSp.getDataEmissao();
+        StatusRps status = StatusRps.fromChar(rpsSp.getSituacao());
 
         Rps rps = new Rps();
+        rps.setIdentificacaoRps(identificacaoRps);
         rps.setDataEmissao(StringConverter.toXMLGregorianCalendar(dataEmissao));
+        rps.setStatus(status);
+
         return rps;
     }
 

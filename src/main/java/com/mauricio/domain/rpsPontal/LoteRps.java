@@ -51,9 +51,7 @@ public class LoteRps {
         int quantidadeRps = loteRpsSp.getRodape().getQntLinhaDetalhes();
         String versao = "2.01";
 
-
-        CpfCnpj cnpj = new CpfCnpj();
-        cnpj.setCnpj("000000000000");
+        CpfCnpj cnpj = CpfCnpj.getDefault();
 
         ListaRps listaRps = ListaRps.fromSpModel(loteRpsSp.getRpsList());
 
@@ -62,6 +60,7 @@ public class LoteRps {
         loteRps.setInscricaoMunicipal(inscricaoMuncipal);
         loteRps.setQuantidadeRps(quantidadeRps);
         loteRps.setVersao(versao);
+        loteRps.setListaRps(listaRps);
         return loteRps;
     }
 }

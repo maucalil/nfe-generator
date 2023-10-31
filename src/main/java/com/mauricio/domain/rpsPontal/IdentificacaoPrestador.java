@@ -1,5 +1,6 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.utils.ConstantUtils;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -7,6 +8,7 @@ import jakarta.xml.bind.annotation.XmlType;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tcIdentificacaoPrestador", propOrder = {
@@ -15,6 +17,7 @@ import lombok.Setter;
 })
 @Getter
 @Setter
+@ToString
 public class IdentificacaoPrestador {
     @XmlElement(name = "CpfCnpj")
     private CpfCnpj cpfCnpj;
@@ -23,10 +26,7 @@ public class IdentificacaoPrestador {
     private String inscricaoMunicipal;
 
     public IdentificacaoPrestador() {
-        CpfCnpj cpfCnpj = new CpfCnpj();
-        cpfCnpj.setCnpj("00000000000");
-
-        this.cpfCnpj = cpfCnpj;
-        this.inscricaoMunicipal = "1902";
+        this.cpfCnpj = CpfCnpj.getDefault();
+        this.inscricaoMunicipal = ConstantUtils.INSCRICAO_MUNICIPAL;
     }
 }

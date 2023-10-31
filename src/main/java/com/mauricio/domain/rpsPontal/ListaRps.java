@@ -5,8 +5,10 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +17,10 @@ import java.util.List;
 @XmlType(name = "", propOrder = {
         "rps"
 })
+@AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class ListaRps {
     @XmlElement(name = "Rps", required = true)
     private List<DeclaracaoPrestacaoServico> rps;
@@ -26,7 +30,9 @@ public class ListaRps {
 
         for (RpsSp rpsSp : rpsSpList) {
             DeclaracaoPrestacaoServico rps = DeclaracaoPrestacaoServico.fromSpModel(rpsSp);
+            rpsList.add(rps);
         }
-        return null;
+
+        return new ListaRps(rpsList);
     }
 }

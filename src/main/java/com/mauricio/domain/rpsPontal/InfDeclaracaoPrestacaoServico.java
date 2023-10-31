@@ -5,6 +5,7 @@ import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -17,12 +18,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
         "tomador",
 //        "intermediario",
 //        "construcaoCivil",
-        "regimeEspecialTributacao",
+//        "regimeEspecialTributacao",
         "optanteSimplesNacional",
         "incentivoFiscal"
 })
 @Getter
 @Setter
+@ToString
 public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "Rps")
     private Rps rps;
@@ -61,6 +63,7 @@ public class InfDeclaracaoPrestacaoServico {
 
         InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico = new InfDeclaracaoPrestacaoServico();
         infDeclaracaoPrestacaoServico.setRps(rps);
+        infDeclaracaoPrestacaoServico.setCompetencia(rps.getDataEmissao());
         infDeclaracaoPrestacaoServico.setServico(servico);
         infDeclaracaoPrestacaoServico.setPrestador(prestador);
         infDeclaracaoPrestacaoServico.setTomador(tomador);

@@ -1,12 +1,9 @@
 package com.mauricio.domain.rpsPontal;
 
 import com.mauricio.domain.enums.IndicadorCpfCnpj;
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import com.mauricio.domain.utils.ConstantUtils;
+import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -23,6 +20,7 @@ public class CpfCnpj {
     @XmlElement(name = "Cnpj")
     private String cnpj;
 
+    @XmlTransient // faz o marshalling XML ignorar essa propriedade
     private boolean isPJ;
 
     public static CpfCnpj fromString(String line) {
@@ -42,6 +40,13 @@ public class CpfCnpj {
         }
 
         return cpfCnpj;
+    }
+
+    public static CpfCnpj getDefault() {
+        CpfCnpj cnpj = new CpfCnpj();
+        cnpj.setCnpj(ConstantUtils.CNPJ_IMOBILIARIA);
+
+        return cnpj;
     }
 
     public boolean isSemCpf() {
