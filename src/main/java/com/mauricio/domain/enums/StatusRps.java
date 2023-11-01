@@ -7,10 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum StatusRps {
-    @XmlEnumValue("N")
+    @XmlEnumValue("1")
     NORMAL('N'),
 
-    @XmlEnumValue("C")
+    @XmlEnumValue("2")
     CANCELADO('C');
 
     private final char codigo;

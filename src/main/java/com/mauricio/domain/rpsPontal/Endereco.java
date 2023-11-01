@@ -64,7 +64,11 @@ public class Endereco {
         if (matcher.find()) {
             enderecoCompleto.setEndereco(matcher.group(1));
             enderecoCompleto.setNumero(matcher.group(2));
-            enderecoCompleto.setComplemento(matcher.group(3).strip());
+
+            String complemento = matcher.group(3).strip();
+            if (!complemento.isEmpty()) {
+                enderecoCompleto.setComplemento(complemento);
+            }
         }
         enderecoCompleto.setBairro(bairro);
         enderecoCompleto.setUf(uf);

@@ -28,7 +28,7 @@ public class CpfCnpj {
         int codigo = Integer.parseInt(line.substring(72, 73));
 
         if (codigo == IndicadorCpfCnpj.CPF.getCodigo()) {
-            String cpf = line.substring(77, 87);
+            String cpf = line.substring(76, 87);
             cpfCnpj.setCpf(cpf);
             cpfCnpj.setIsPJ(false);
         } else if (codigo == IndicadorCpfCnpj.CNPJ.getCodigo()) {
