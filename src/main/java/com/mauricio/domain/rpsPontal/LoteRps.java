@@ -1,6 +1,7 @@
 package com.mauricio.domain.rpsPontal;
 
 import com.mauricio.domain.rpsSP.LoteRpsSp;
+import com.mauricio.domain.utils.ConstantUtils;
 import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -49,18 +50,17 @@ public class LoteRps {
     public static LoteRps fromLoteRpsSp(LoteRpsSp loteRpsSp) {
         String inscricaoMuncipal = loteRpsSp.getCabecalho().getInscricaoMunicipalPrestador();
         int quantidadeRps = loteRpsSp.getRodape().getQntLinhaDetalhes();
-        String versao = "2.01";
 
         CpfCnpj cnpj = CpfCnpj.getDefault();
-
         ListaRps listaRps = ListaRps.fromSpModel(loteRpsSp.getRpsList());
 
         LoteRps loteRps = new LoteRps();
+        loteRps.setNumeroLote(BigInteger.ONE);
         loteRps.setCpfCnpj(cnpj);
         loteRps.setInscricaoMunicipal(inscricaoMuncipal);
         loteRps.setQuantidadeRps(quantidadeRps);
-        loteRps.setVersao(versao);
         loteRps.setListaRps(listaRps);
+        loteRps.setVersao(ConstantUtils.VERSAO_LOTE_RPS);
         return loteRps;
     }
 }

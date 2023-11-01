@@ -59,7 +59,7 @@ public class DadosServico {
     protected String codigoPais; //  TODO remover?
 
     @XmlElement(name = "ExigibilidadeISS", required = true)
-    protected byte exigibilidadeISS;
+    protected char exigibilidadeISS; // TODO create enum
 
     @XmlElement(name = "MunicipioIncidencia")
     protected Integer municipioIncidencia; //  TODO remover?
@@ -81,7 +81,9 @@ public class DadosServico {
         dadosServico.setValores(valores);
         dadosServico.setIssRetido(issRetido);
         dadosServico.setDiscriminacao(dadosServicoSp.getDiscriminacao());
-        dadosServico.setCodigoMunicipio(ConstantUtils.CODIGO_MUNICIPIO);
+        dadosServico.setCodigoMunicipio(ConstantUtils.CODIGO_MUNICIPIO_IBGE);
+        dadosServico.setExigibilidadeISS('1');
+        dadosServico.setItemListaServico(ConstantUtils.CODIGO_LOCACAO_OU_VENDA); // TODO make an option to user
 
         return dadosServico;
     }

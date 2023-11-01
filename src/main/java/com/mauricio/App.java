@@ -1,5 +1,6 @@
 package com.mauricio;
 
+import com.mauricio.domain.rpsPontal.EnviarLoteRps;
 import com.mauricio.domain.rpsSP.LoteRpsSp;
 import com.mauricio.domain.rpsPontal.LoteRps;
 import com.mauricio.domain.rpsSP.RpsSp;
@@ -32,25 +33,20 @@ public class App {
         }
 
         LoteRps loteRps = LoteRps.fromLoteRpsSp(loteRpsSp);
+        EnviarLoteRps enviarLoteRps = new EnviarLoteRps();
+        enviarLoteRps.setLoteRps(loteRps);
+        jaxbObjectToXML(enviarLoteRps);
     }
 
-    private static XMLGregorianCalendar retrieveXMLGregorianCalendar(GregorianCalendar date) {
+    private static void jaxbObjectToXML(EnviarLoteRps loteRps) {
         try {
-            return DatatypeFactory.newInstance().newXMLGregorianCalendar(date);
-        } catch (DatatypeConfigurationException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static void jaxbObjectToXML(LoteRps loteRps) {
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(LoteRps.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(EnviarLoteRps.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE); // To format XML
 
             //Print XML String to Console
-            jaxbMarshaller.marshal(loteRps, new File("src/main/resources/loteRps.xml"));
+            jaxbMarshaller.marshal(loteRps, new File("src/main/resources/loteRpsTeste.xml"));
         } catch (JAXBException e) {
             e.printStackTrace();
         }
