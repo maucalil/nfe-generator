@@ -4,7 +4,7 @@ import jakarta.xml.bind.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 
-@XmlRootElement(name = "EnviarLoteRpsSincronoEnvio", namespace = "http://www.abrasf.org.br/nfse.xsd")
+@XmlRootElement(name = "EnviarLoteRpsSincronoEnvio")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
         "loteRps",
@@ -16,6 +16,6 @@ public class EnviarLoteRps {
     @XmlElement(name = "LoteRps", required = true)
     protected LoteRps loteRps;
 
-    @XmlElement(name = "Signature", namespace = "http://www.w3.org/2000/09/xmldsig#")
+    @XmlElement(name = "Signature")
     protected String signature;
 }

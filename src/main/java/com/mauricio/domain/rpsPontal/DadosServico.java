@@ -1,5 +1,6 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.enums.ExigibilidadeIss;
 import com.mauricio.domain.enums.IssRetido;
 import com.mauricio.domain.enums.SimNao;
 import com.mauricio.domain.rpsSP.DadosServicoSp;
@@ -53,13 +54,13 @@ public class DadosServico {
     protected String discriminacao;
 
     @XmlElement(name = "CodigoMunicipio", required = true)
-    protected int codigoMunicipio; // codigo do municipio onde o servico  foi prestado
+    protected int codigoMunicipio; // codigo do municipio onde o servico foi prestado
 
     @XmlElement(name = "CodigoPais")
     protected String codigoPais; //  TODO remover?
 
     @XmlElement(name = "ExigibilidadeISS", required = true)
-    protected char exigibilidadeISS; // TODO create enum
+    protected ExigibilidadeIss exigibilidadeISS;
 
     @XmlElement(name = "MunicipioIncidencia")
     protected Integer municipioIncidencia; //  TODO remover?
@@ -82,7 +83,7 @@ public class DadosServico {
         dadosServico.setIssRetido(issRetido);
         dadosServico.setDiscriminacao(dadosServicoSp.getDiscriminacao());
         dadosServico.setCodigoMunicipio(ConstantUtils.CODIGO_MUNICIPIO_IBGE);
-        dadosServico.setExigibilidadeISS('1');
+        dadosServico.setExigibilidadeISS(ExigibilidadeIss.EXIGIVEL); // TODO fix exigibilidadeISS
         dadosServico.setItemListaServico(ConstantUtils.CODIGO_LOCACAO_OU_VENDA); // TODO make an option to user
 
         return dadosServico;

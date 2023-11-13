@@ -26,7 +26,7 @@ import java.math.BigInteger;
 public class LoteRps {
     @XmlElement(name = "NumeroLote", required = true)
     @XmlSchemaType(name = "nonNegativeInteger")
-    private BigInteger numeroLote; // TODO nao tem na de sp
+    private BigInteger numeroLote;
 
     @XmlElement(name = "CpfCnpj", required = true)
     private CpfCnpj cpfCnpj; // do prestador
@@ -55,7 +55,7 @@ public class LoteRps {
         ListaRps listaRps = ListaRps.fromSpModel(loteRpsSp.getRpsList());
 
         LoteRps loteRps = new LoteRps();
-        loteRps.setNumeroLote(BigInteger.ONE);
+        loteRps.setNumeroLote(BigInteger.ONE); // TODO fix numeroLote
         loteRps.setCpfCnpj(cnpj);
         loteRps.setInscricaoMunicipal(inscricaoMuncipal);
         loteRps.setQuantidadeRps(quantidadeRps);
