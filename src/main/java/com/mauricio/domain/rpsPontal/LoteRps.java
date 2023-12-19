@@ -5,12 +5,14 @@ import com.mauricio.domain.utils.ConstantUtils;
 import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.crypto.dsig.SignatureMethod;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.math.BigInteger;
 
+// Deve ser assinado
 @XmlRootElement(name = "LoteRps")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tcLoteRps", propOrder = {
@@ -41,6 +43,7 @@ public class LoteRps {
     private ListaRps listaRps;
 
     @XmlAttribute(name = "Id")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     private String id;
 
     @XmlAttribute(name = "versao", required = true)
@@ -61,6 +64,7 @@ public class LoteRps {
         loteRps.setQuantidadeRps(quantidadeRps);
         loteRps.setListaRps(listaRps);
         loteRps.setVersao(ConstantUtils.VERSAO_LOTE_RPS);
+        loteRps.setId("lote" + loteRps.numeroLote);
         return loteRps;
     }
 }

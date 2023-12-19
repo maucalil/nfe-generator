@@ -1,8 +1,11 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.enums.RegimeEspecialTributacao;
 import com.mauricio.domain.enums.SimNao;
 import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,7 +21,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
         "tomador",
 //        "intermediario",
 //        "construcaoCivil",
-//        "regimeEspecialTributacao",
+        "regimeEspecialTributacao",
         "optanteSimplesNacional",
         "incentivoFiscal"
 })
@@ -42,8 +45,8 @@ public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "Tomador")
     private DadosTomador tomador;
 
-//    @XmlElement(name = "RegimeEspecialTributacao")
-//    private Byte regimeEspecialTributacao;
+    @XmlElement(name = "RegimeEspecialTributacao")
+    private RegimeEspecialTributacao regimeEspecialTributacao;
 
     @XmlElement(name = "OptanteSimplesNacional", required = true)
     private SimNao optanteSimplesNacional;
@@ -51,8 +54,9 @@ public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "IncentivoFiscal", required = true)
     private SimNao incentivoFiscal;
 
-//    @XmlAttribute(name = "Id")
-//    private String id;
+    @XmlAttribute(name = "Id")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+    private String id;
 
     public static InfDeclaracaoPrestacaoServico fromSpModel(RpsSp rpsSp) {
         Rps rps = Rps.fromSpModel(rpsSp);
@@ -68,7 +72,9 @@ public class InfDeclaracaoPrestacaoServico {
         infDeclaracaoPrestacaoServico.setPrestador(prestador);
         infDeclaracaoPrestacaoServico.setTomador(tomador);
         infDeclaracaoPrestacaoServico.setOptanteSimplesNacional(SimNao.SIM);
+        infDeclaracaoPrestacaoServico.setRegimeEspecialTributacao(RegimeEspecialTributacao.ME_EPP);
         infDeclaracaoPrestacaoServico.setIncentivoFiscal(SimNao.NAO);
+        infDeclaracaoPrestacaoServico.setId("rps" + rps.getIdentificacaoRps().getNumero());
 
         return infDeclaracaoPrestacaoServico;
     }
