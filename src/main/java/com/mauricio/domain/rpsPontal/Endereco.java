@@ -1,6 +1,5 @@
 package com.mauricio.domain.rpsPontal;
 
-import com.mauricio.domain.utils.ConstantUtils;
 import com.mauricio.domain.utils.MunicipioUtil;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;

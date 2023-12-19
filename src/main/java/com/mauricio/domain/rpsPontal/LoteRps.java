@@ -5,7 +5,6 @@ import com.mauricio.domain.utils.ConstantUtils;
 import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import javax.xml.crypto.dsig.SignatureMethod;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

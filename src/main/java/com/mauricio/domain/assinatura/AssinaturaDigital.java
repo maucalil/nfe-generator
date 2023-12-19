@@ -74,7 +74,7 @@ public class AssinaturaDigital {
         X509Certificate cert = (X509Certificate) pkEntry.getCertificate();
 
         KeyInfoFactory keyInfoFactory = signatureFactory.getKeyInfoFactory();
-        List<X509Certificate> x509Content = new ArrayList<X509Certificate>();
+        List<X509Certificate> x509Content = new ArrayList<>();
         x509Content.add(cert);
         X509Data x509Data = keyInfoFactory.newX509Data(x509Content);
         KeyInfo keyInfo = keyInfoFactory.newKeyInfo(Collections.singletonList(x509Data));
@@ -84,7 +84,7 @@ public class AssinaturaDigital {
 
     private ArrayList<Transform> signatureFactory(XMLSignatureFactory signatureFactory)
             throws NoSuchAlgorithmException, InvalidAlgorithmParameterException {
-        ArrayList<Transform> transformList = new ArrayList<Transform>();
+        ArrayList<Transform> transformList = new ArrayList<>();
         TransformParameterSpec tps = null;
         Transform envelopedTransform = signatureFactory.newTransform(Transform.ENVELOPED, tps);
         Transform c14NTransform =
