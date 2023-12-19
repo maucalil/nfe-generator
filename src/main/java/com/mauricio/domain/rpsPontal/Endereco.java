@@ -1,5 +1,7 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.utils.ConstantUtils;
+import com.mauricio.domain.utils.MunicipioUtil;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -52,10 +54,9 @@ public class Endereco {
 
     public static Endereco fromString(String line) {
         String bairro = line.substring(275, 305).strip();
+        String nomeMunicipio = line.substring(305, 355).strip();
         String uf = line.substring(355, 357);
         String cep = line.substring(357, 365);
-        // codigoMunicipio - so tem o nome
-        // codigo pais nao tem
 
         Pattern pattern = getEnderecoPattern();
         Matcher matcher = pattern.matcher(line.substring(185, 235));
@@ -71,6 +72,7 @@ public class Endereco {
             }
         }
         enderecoCompleto.setBairro(bairro);
+        enderecoCompleto.setCodigoMunicipio(MunicipioUtil.getCodigoMunicipio(nomeMunicipio));
         enderecoCompleto.setUf(uf);
         enderecoCompleto.setCep(cep);
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd">
+    <LoteRps Id="5402" versao="2.01">
+        <NumeroLote>5402</NumeroLote>
+        <CpfCnpj>
+            <Cnpj>01001001000113</Cnpj>
+        </CpfCnpj>
+        <InscricaoMunicipal>15000</InscricaoMunicipal>
+        <QuantidadeRps>1</QuantidadeRps>
+        <ListaRps>
+            <Rps>
+                <InfDeclaracaoPrestacaoServico Id=" ">
+                    <Rps>
+                        <IdentificacaoRps>
+                            <Numero>5402</Numero>
+                            <Serie>UNICA</Serie>
+                            <Tipo>1</Tipo>
+                        </IdentificacaoRps>
+                        <DataEmissao>2023-12-10</DataEmissao>
+                        <Status>1</Status>
+                    </Rps>
+                    <Competencia>2023-12-10</Competencia>
+                    <Servico>
+                        <Valores>
+                            <ValorServicos>1685.50</ValorServicos>
+                            <ValorIss>33.71</ValorIss>
+                            <Aliquota>2.00</Aliquota>
+                        </Valores>
+                        <IssRetido>2</IssRetido>
+                        <ItemListaServico>01.05</ItemListaServico> <!-- maybe -->
+                        <Discriminacao>discriminacao</Discriminacao>
+                        <CodigoMunicipio>3504800</CodigoMunicipio>
+                        <ExigibilidadeISS>1</ExigibilidadeISS>
+                        <MunicipioIncidencia>3504800</MunicipioIncidencia>
+                    </Servico>
+                    <Prestador>
+                        <CpfCnpj>
+                            <Cnpj>01001001000113</Cnpj>
+                        </CpfCnpj>
+                        <InscricaoMunicipal>15000</InscricaoMunicipal>
+                    </Prestador>
+                    <Tomador>
+                        <IdentificacaoTomador>
+                            <CpfCnpj>
+                                <Cnpj>99999999000191</Cnpj>
+                            </CpfCnpj>
+                            <InscricaoMunicipal>1733160024</InscricaoMunicipal>
+                        </IdentificacaoTomador>
+                        <RazaoSocial>INSCRICAO DE TESTE</RazaoSocial>
+                        <Endereco>
+                            <Endereco>RUA PRINCIPAL</Endereco>
+                            <Numero>100</Numero>
+                            <Complemento>APTO 11</Complemento>
+                            <Bairro>CENTRO</Bairro>
+                            <CodigoMunicipio>3504800</CodigoMunicipio>
+                            <Uf>SP</Uf>
+                            <Cep>76900077</Cep>
+                        </Endereco>
+                        <Contato>
+                            <Telefone>1122223333</Telefone>
+                            <Email>nome@provedor.com.br</Email>
+                        </Contato>
+                    </Tomador>
+                    <OptanteSimplesNacional>2</OptanteSimplesNacional>
+                    <IncentivoFiscal>2</IncentivoFiscal>
+                </InfDeclaracaoPrestacaoServico>
+            </Rps>
+        </ListaRps>
+    </LoteRps>
+</EnviarLoteRpsSincronoEnvio>

@@ -54,10 +54,10 @@ public class DadosServico {
     protected String discriminacao;
 
     @XmlElement(name = "CodigoMunicipio", required = true)
-    protected int codigoMunicipio; // codigo do municipio onde o servico foi prestado
+    protected int codigoMunicipio;
 
     @XmlElement(name = "CodigoPais")
-    protected String codigoPais; //  TODO remover?
+    protected String codigoPais;
 
     @XmlElement(name = "ExigibilidadeISS", required = true)
     protected ExigibilidadeIss exigibilidadeISS;
@@ -82,8 +82,9 @@ public class DadosServico {
         dadosServico.setValores(valores);
         dadosServico.setIssRetido(issRetido);
         dadosServico.setDiscriminacao(dadosServicoSp.getDiscriminacao());
-        dadosServico.setCodigoMunicipio(ConstantUtils.CODIGO_MUNICIPIO_IBGE);
-        dadosServico.setExigibilidadeISS(ExigibilidadeIss.EXIGIVEL); // TODO fix exigibilidadeISS
+        dadosServico.setCodigoMunicipio(ConstantUtils.CODIGO_PONTAL_IBGE);
+        dadosServico.setCodigoPais(ConstantUtils.CODIGO_PAIS_IBGE);
+        dadosServico.setExigibilidadeISS(ExigibilidadeIss.EXIGIVEL);
         dadosServico.setItemListaServico(ConstantUtils.CODIGO_LOCACAO_OU_VENDA); // TODO make an option to user
 
         return dadosServico;

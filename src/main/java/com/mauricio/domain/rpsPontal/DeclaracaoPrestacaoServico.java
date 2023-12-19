@@ -22,7 +22,7 @@ public class DeclaracaoPrestacaoServico {
     private InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico;
 
     @XmlElement(name = "Signature", namespace = "http://www.w3.org/2000/09/xmldsig#")
-    private String signature; // TODO: change to SignatureType
+    private String signature;
 
     public static DeclaracaoPrestacaoServico fromSpModel(RpsSp rpsSp) {
         InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico = InfDeclaracaoPrestacaoServico.fromSpModel(rpsSp);

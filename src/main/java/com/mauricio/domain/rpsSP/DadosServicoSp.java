@@ -11,18 +11,18 @@ import lombok.ToString;
 @ToString
 public class DadosServicoSp {
     private String codigoServico;
-    private IssRetido issRetido; // todo criar enum
+    private IssRetido issRetido;
     private ValoresServico valoresServico;
     private CargaTributaria cargaTributaria;
     private DadosTomador dadosTomador;
     private String codMunicipioPrestacao;
-    private String discriminacao; // algo errado aqui
+    private String discriminacao;
     // CEI, codigo obra e numero de encapsulamento - nao sei o que fazer
 
     public static DadosServicoSp fromString(String line) {
         String codigoServico = line.substring(62, 67).trim();
         String codMunicipioPrestacao = line.substring(569, 576).trim();
-        String discriminacao = line.substring(786-10).strip(); // TODO verificar erro no arquivo das linhas 596 a 776
+        String discriminacao = line.substring(786-10).strip();
         int issRetido = Integer.parseInt(line.substring(71, 72));
 
         CargaTributaria cargaTributaria = CargaTributaria.fromString(line);
