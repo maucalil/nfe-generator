@@ -10,7 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CargaTributaria {
-    private String valor; // Change to class Valor when it's created
+    private String valor;
     private String porcentagem;
     private String fonte;
 

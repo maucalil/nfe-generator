@@ -1,8 +1,14 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.enums.RegimeEspecialTributacao;
+import com.mauricio.domain.enums.SimNao;
+import com.mauricio.domain.rpsSP.RpsSp;
 import jakarta.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -21,9 +27,10 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 @Getter
 @Setter
+@ToString
 public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "Rps")
-    private Rps rps; // InfRps talvez
+    private Rps rps;
 
     @XmlElement(name = "Competencia", required = true)
     @XmlSchemaType(name = "date")
@@ -38,21 +45,37 @@ public class InfDeclaracaoPrestacaoServico {
     @XmlElement(name = "Tomador")
     private DadosTomador tomador;
 
-//    @XmlElement(name = "Intermediario")
-//    private String intermediario; // TODO: change to DadosIntermediario
-
-//    @XmlElement(name = "ConstrucaoCivil")
-//    private String construcaoCivil; // TODO: change to DadosConstrucaoCivil
-
     @XmlElement(name = "RegimeEspecialTributacao")
-    private Byte regimeEspecialTributacao;
+    private RegimeEspecialTributacao regimeEspecialTributacao;
 
-    @XmlElement(name = "OptanteSimplesNacional")
-    private byte optanteSimplesNacional;
+    @XmlElement(name = "OptanteSimplesNacional", required = true)
+    private SimNao optanteSimplesNacional;
 
-    @XmlElement(name = "IncentivoFiscal")
-    private byte incentivoFiscal;
+    @XmlElement(name = "IncentivoFiscal", required = true)
+    private SimNao incentivoFiscal;
 
     @XmlAttribute(name = "Id")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     private String id;
+
+    public static InfDeclaracaoPrestacaoServico fromSpModel(RpsSp rpsSp) {
+        Rps rps = Rps.fromSpModel(rpsSp);
+        DadosTomador tomador = rpsSp.getDadosServico().getDadosTomador();
+        DadosServico servico = DadosServico.fromSpModel(rpsSp.getDadosServico());
+
+        IdentificacaoPrestador prestador = new IdentificacaoPrestador();
+
+        InfDeclaracaoPrestacaoServico infDeclaracaoPrestacaoServico = new InfDeclaracaoPrestacaoServico();
+        infDeclaracaoPrestacaoServico.setRps(rps);
+        infDeclaracaoPrestacaoServico.setCompetencia(rps.getDataEmissao());
+        infDeclaracaoPrestacaoServico.setServico(servico);
+        infDeclaracaoPrestacaoServico.setPrestador(prestador);
+        infDeclaracaoPrestacaoServico.setTomador(tomador);
+        infDeclaracaoPrestacaoServico.setOptanteSimplesNacional(SimNao.SIM);
+        infDeclaracaoPrestacaoServico.setRegimeEspecialTributacao(RegimeEspecialTributacao.ME_EPP);
+        infDeclaracaoPrestacaoServico.setIncentivoFiscal(SimNao.NAO);
+        infDeclaracaoPrestacaoServico.setId("rps" + rps.getIdentificacaoRps().getNumero());
+
+        return infDeclaracaoPrestacaoServico;
+    }
 }

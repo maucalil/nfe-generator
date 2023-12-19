@@ -1,5 +1,6 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.utils.MunicipioUtil;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -7,6 +8,9 @@ import jakarta.xml.bind.annotation.XmlType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tcEndereco", propOrder = {
@@ -48,21 +52,37 @@ public class Endereco {
     private String cep;
 
     public static Endereco fromString(String line) {
-        String endereco = line.substring(185, 235).strip();
-        // numero e complemento estao no de cima, o que fazer?
         String bairro = line.substring(275, 305).strip();
-        // codigoMunicipio - so tem o nome
+        String nomeMunicipio = line.substring(305, 355).strip();
         String uf = line.substring(355, 357);
         String cep = line.substring(357, 365);
-        // codigo pais nao tem
+
+        Pattern pattern = getEnderecoPattern();
+        Matcher matcher = pattern.matcher(line.substring(185, 235));
 
         Endereco enderecoCompleto = new Endereco();
-        enderecoCompleto.setEndereco(endereco);
+        if (matcher.find()) {
+            enderecoCompleto.setEndereco(matcher.group(1));
+            enderecoCompleto.setNumero(matcher.group(2));
+
+            String complemento = matcher.group(3).strip();
+            if (!complemento.isEmpty()) {
+                enderecoCompleto.setComplemento(complemento);
+            }
+        }
         enderecoCompleto.setBairro(bairro);
-        enderecoCompleto.setBairro(bairro);
+        enderecoCompleto.setCodigoMunicipio(MunicipioUtil.getCodigoMunicipio(nomeMunicipio));
         enderecoCompleto.setUf(uf);
         enderecoCompleto.setCep(cep);
 
         return enderecoCompleto;
+    }
+
+    // O endereco (endereco, numero e complemento) vem tudo junto na string do txt de SP
+    // Este metodo visa retornar o Patter que reconhece o regex para separar os 3 componentes
+    private static Pattern getEnderecoPattern()  {
+        // Primeiro grupo eh o endereco, segundo o numero e terceiro o complemento
+        String REGEX = "([\\w\\W]+)\\s(\\d+)\\s?([\\w\\W]+)";
+        return Pattern.compile(REGEX);
     }
 }

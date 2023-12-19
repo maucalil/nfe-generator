@@ -28,7 +28,9 @@ public class Contato {
         String email = line.substring(365, 440).strip();
 
         Contato contato = new Contato();
-        contato.setEmail(email);
+        if (!email.isEmpty()) {
+            contato.setEmail(email);
+        }
 
         return contato;
     }

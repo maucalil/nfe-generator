@@ -1,5 +1,7 @@
 package com.mauricio.domain.rpsPontal;
 
+import com.mauricio.domain.rpsSP.LoteRpsSp;
+import com.mauricio.domain.utils.ConstantUtils;
 import jakarta.xml.bind.annotation.*;
 import jakarta.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -9,6 +11,7 @@ import lombok.ToString;
 
 import java.math.BigInteger;
 
+// Deve ser assinado
 @XmlRootElement(name = "LoteRps")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "tcLoteRps", propOrder = {
@@ -27,7 +30,7 @@ public class LoteRps {
     private BigInteger numeroLote;
 
     @XmlElement(name = "CpfCnpj", required = true)
-    private CpfCnpj cpfCnpj;
+    private CpfCnpj cpfCnpj; // do prestador
 
     @XmlElement(name = "InscricaoMunicipal")
     private String inscricaoMunicipal; // do prestador
@@ -39,9 +42,28 @@ public class LoteRps {
     private ListaRps listaRps;
 
     @XmlAttribute(name = "Id")
+    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     private String id;
 
     @XmlAttribute(name = "versao", required = true)
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     private String versao;
+
+    public static LoteRps fromLoteRpsSp(LoteRpsSp loteRpsSp) {
+        String inscricaoMuncipal = loteRpsSp.getCabecalho().getInscricaoMunicipalPrestador();
+        int quantidadeRps = loteRpsSp.getRodape().getQntLinhaDetalhes();
+
+        CpfCnpj cnpj = CpfCnpj.getDefault();
+        ListaRps listaRps = ListaRps.fromSpModel(loteRpsSp.getRpsList());
+
+        LoteRps loteRps = new LoteRps();
+        loteRps.setNumeroLote(BigInteger.ONE); // TODO fix numeroLote
+        loteRps.setCpfCnpj(cnpj);
+        loteRps.setInscricaoMunicipal(inscricaoMuncipal);
+        loteRps.setQuantidadeRps(quantidadeRps);
+        loteRps.setListaRps(listaRps);
+        loteRps.setVersao(ConstantUtils.VERSAO_LOTE_RPS);
+        loteRps.setId("lote" + loteRps.numeroLote);
+        return loteRps;
+    }
 }

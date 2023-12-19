@@ -1,6 +1,9 @@
 package com.mauricio.domain.rpsSP;
 
 import com.mauricio.domain.enums.TipoRegistro;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,12 +11,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoteRpsTxt {
+@Getter
+@Setter
+@ToString
+public class LoteRpsSp {
     private Cabecalho cabecalho;
-    private List<RpsTxt> rpsList;
+    private List<RpsSp> rpsList;
+    private Rodape rodape;
 
-    public static LoteRpsTxt fromTxtFile(String filePath) throws IOException {
-        LoteRpsTxt lote = new LoteRpsTxt();
+    public static LoteRpsSp fromTxtFile(String filePath) throws IOException {
+        LoteRpsSp lote = new LoteRpsSp();
         lote.rpsList = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -23,14 +30,13 @@ public class LoteRpsTxt {
 
                 if (codigo == TipoRegistro.CABECALHO.getCodigo()) {
                     Cabecalho cabecalho = Cabecalho.fromString(line);
-                    System.out.println(cabecalho);
+                    lote.setCabecalho(cabecalho);
                 } else if (codigo == TipoRegistro.DETALHE.getCodigo()) {
-                    RpsTxt rps = RpsTxt.fromString(line);
-                    System.out.println(rps);
+                    RpsSp rps = RpsSp.fromString(line);
                     lote.rpsList.add(rps);
                 } else if (codigo == TipoRegistro.RODAPE.getCodigo()) {
                     Rodape rodape = Rodape.fromString(line);
-                    System.out.println(rodape);
+                    lote.setRodape(rodape);
                 }
             }
         } catch (IOException e) {
