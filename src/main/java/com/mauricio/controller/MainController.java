@@ -4,6 +4,7 @@ import com.mauricio.domain.assinatura.CertificadoDigital;
 import com.mauricio.domain.rpsPontal.EnviarLoteRps;
 import com.mauricio.domain.rpsPontal.LoteRps;
 import com.mauricio.domain.rpsSP.LoteRpsSp;
+import com.mauricio.domain.utils.ErrorUtils;
 import com.mauricio.model.MainModel;
 import com.mauricio.view.MainView;
 import jakarta.xml.bind.JAXBContext;
@@ -30,7 +31,7 @@ public class MainController {
         this.mainView = mainView;
         this.mainModel = mainModel;
 
-        mainView.getFileChooser().addActionListener(new ActionListener() {
+        mainView.getFileChooserBtn().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 showFileChooser();
@@ -48,17 +49,24 @@ public class MainController {
     }
 
     private void showFileChooser() {
-        JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = mainView.getFileChooser();
         fileChooser.setCurrentDirectory(new File("."));
         fileChooser.showDialog(null, null);
 
-        mainModel.setArquivoLoteSp(fileChooser.getSelectedFile().getAbsolutePath());
-        mainView.getFileChooserLabel().setText(fileChooser.getSelectedFile().getName());
+        File fileChosen = fileChooser.getSelectedFile();
+        if (fileChosen != null) {
+            mainView.getFileChooserLabel().setText(fileChosen.getName());
+        }
     }
 
     private void performGerarLoteAction() {
         // Atualiza o modelo com os dados do formulário
-        updateModel();
+        try {
+            updateModel();
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(mainView, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         // Converte o arquivo txt de SP em um Lote RPS
         LoteRpsSp loteRpsSp = getLoteRpsSp(mainModel.getArquivoLoteSp());
@@ -100,13 +108,24 @@ public class MainController {
     private void updateModel() {
         String selectedCert = (String) mainView.getCertificadoChooser().getSelectedItem();
         String certPassword = new String(mainView.getCertificadoPassword().getPassword());
-        int nroLote = Integer.parseInt(mainView.getNroLote().getText());
-        String pathArquivo = "src/main/resources/txtFiles/test.txt";
+        String nroLoteInput = mainView.getNroLote().getText().trim();
+        File arquivoLoteSp = mainView.getFileChooser().getSelectedFile();
 
-        mainModel.setCertificado(new CertificadoDigital(selectedCert, ks, certPassword));
-        mainModel.setNroLote(nroLote);
-        mainModel.setArquivoLoteSp(pathArquivo);
+        if (selectedCert == null || certPassword.isEmpty() || nroLoteInput.isEmpty() || arquivoLoteSp == null) {
+            throw new IllegalArgumentException(ErrorUtils.FORMULARIO_INCOMPLETO);
+        }
+
+        try {
+            int nroLote = Integer.parseInt(nroLoteInput);
+            mainModel.setCertificado(new CertificadoDigital(selectedCert, ks, certPassword));
+            mainModel.setNroLote(nroLote);
+            mainModel.setArquivoLoteSp(arquivoLoteSp.getAbsolutePath());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorUtils.TIPO_NRO_LOTE);
+        }
     }
+
+
     private LoteRpsSp getLoteRpsSp(String filePath) {
         LoteRpsSp loteRpsSp = null;
         try {

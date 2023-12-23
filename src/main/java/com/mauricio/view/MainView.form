@@ -176,7 +176,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="d8870" class="javax.swing.JButton" binding="fileChooser">
+              <component id="d8870" class="javax.swing.JButton" binding="fileChooserBtn">
                 <constraints/>
                 <properties>
                   <focusPainted value="true"/>

@@ -16,7 +16,8 @@ public class MainView extends JFrame {
     private JPanel panelContent;
     private JComboBox certificadoChooser;
     private JPasswordField certificadoPassword;
-    private JButton fileChooser;
+    private JButton fileChooserBtn;
+    private JFileChooser fileChooser;
     private JButton btnGerarLote;
     private JButton btnLoteRps;
     private JTextField nroLote;
@@ -41,6 +42,7 @@ public class MainView extends JFrame {
         UIManager.put("Component.arc", 200);
         UIManager.put("TextComponent.arc", 200);
     }
+
     private void init() {
         // Main panel config
         setTitle("Clara Imóveis - Gerenciamento de NF-e");
@@ -65,5 +67,8 @@ public class MainView extends JFrame {
                 "pressedBackground: #FFFFFF;" +
                 "foreground: #000000;" +
                 "arc: 30;");
+
+        // Other configs
+        fileChooser = new JFileChooser();
     }
 }
