@@ -14,7 +14,7 @@ public class MainView extends JFrame {
     private JPanel mainPanel;
     private JPanel panelSideMenu;
     private JPanel panelContent;
-    private JComboBox certificadoChooser;
+    private JComboBox<String> certificadoChooser;
     private JPasswordField certificadoPassword;
     private JButton fileChooserBtn;
     private JFileChooser fileChooser;

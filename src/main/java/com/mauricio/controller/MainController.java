@@ -1,10 +1,11 @@
 package com.mauricio.controller;
 
+import com.mauricio.domain.assinatura.AssinaturaDigital;
 import com.mauricio.domain.assinatura.CertificadoDigital;
 import com.mauricio.domain.rpsPontal.EnviarLoteRps;
 import com.mauricio.domain.rpsPontal.LoteRps;
 import com.mauricio.domain.rpsSP.LoteRpsSp;
-import com.mauricio.domain.utils.ErrorUtils;
+import com.mauricio.domain.utils.MessageUtils;
 import com.mauricio.model.MainModel;
 import com.mauricio.view.MainView;
 import jakarta.xml.bind.JAXBContext;
@@ -12,11 +13,7 @@ import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringWriter;
+import java.io.*;
 import java.math.BigInteger;
 import java.security.*;
 import java.security.cert.CertificateException;
@@ -31,19 +28,9 @@ public class MainController {
         this.mainView = mainView;
         this.mainModel = mainModel;
 
-        mainView.getFileChooserBtn().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showFileChooser();
-            }
-        });
+        mainView.getFileChooserBtn().addActionListener(e -> showFileChooser());
 
-        mainView.getBtnGerarLote().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                performGerarLoteAction();
-            }
-        });
+        mainView.getBtnGerarLote().addActionListener(e -> performGerarLoteAction());
 
         fillCertificadoChooser();
     }
@@ -60,25 +47,35 @@ public class MainController {
     }
 
     private void performGerarLoteAction() {
-        // Atualiza o modelo com os dados do formulário
+        mainView.getBtnGerarLote().setEnabled(false);
+
         try {
+            // Atualiza o modelo com os dados do formulário
             updateModel();
+
+            // Converte o arquivo txt de SP em um Lote RPS xml
+            LoteRps loteRps = getLoteRps();
+            String xmlFile = convertLoteRpsToXml(loteRps);
+
+            // Assina o arquivo XML
+            signLoteRps(xmlFile);
         } catch (IllegalArgumentException e) {
             JOptionPane.showMessageDialog(mainView, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
             return;
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(mainView, MessageUtils.E_ESCREVER_ARQUIVO_ASSINADO, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (IOException | JAXBException e) {
+            JOptionPane.showMessageDialog(mainView, MessageUtils.E_ARQUIVO_BAZEVANI, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(mainView, MessageUtils.E_ASSINAR_ARQUIVO_LOTE, "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        } finally {
+            mainView.getBtnGerarLote().setEnabled(true);
         }
 
-        // Converte o arquivo txt de SP em um Lote RPS
-        LoteRpsSp loteRpsSp = getLoteRpsSp(mainModel.getArquivoLoteSp());
-        LoteRps loteRps = LoteRps.fromLoteRpsSp(loteRpsSp);
-
-        // Cria o arquivo XML do Lote RPS
-        EnviarLoteRps enviarLoteRps = new EnviarLoteRps();
-        enviarLoteRps.setLoteRps(loteRps);
-        convertLoteRpsToXml(enviarLoteRps);
-
-        // Assina o arquivo XML
-
+        JOptionPane.showMessageDialog(mainView, MessageUtils.S_LOTE_GERADO_ASSINADO, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
     }
 
     private Enumeration<String> loadCertificados() throws KeyStoreException {
@@ -93,7 +90,7 @@ public class MainController {
         return ks.aliases();
     }
     private void fillCertificadoChooser() {
-        Enumeration<String> aliases = null;
+        Enumeration<String> aliases;
         try {
             aliases = loadCertificados();
         } catch (KeyStoreException e) {
@@ -112,45 +109,51 @@ public class MainController {
         File arquivoLoteSp = mainView.getFileChooser().getSelectedFile();
 
         if (selectedCert == null || certPassword.isEmpty() || nroLoteInput.isEmpty() || arquivoLoteSp == null) {
-            throw new IllegalArgumentException(ErrorUtils.FORMULARIO_INCOMPLETO);
+            throw new IllegalArgumentException(MessageUtils.E_FORMULARIO_INCOMPLETO);
         }
 
         try {
-            int nroLote = Integer.parseInt(nroLoteInput);
             mainModel.setCertificado(new CertificadoDigital(selectedCert, ks, certPassword));
-            mainModel.setNroLote(nroLote);
+            mainModel.setNroLote(new BigInteger(nroLoteInput));
             mainModel.setArquivoLoteSp(arquivoLoteSp.getAbsolutePath());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorUtils.TIPO_NRO_LOTE);
+            throw new IllegalArgumentException(MessageUtils.E_TIPO_NRO_LOTE);
         }
     }
 
-
-    private LoteRpsSp getLoteRpsSp(String filePath) {
-        LoteRpsSp loteRpsSp = null;
-        try {
-            loteRpsSp = LoteRpsSp.fromTxtFile(filePath);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return loteRpsSp;
+    private LoteRps getLoteRps() throws IOException {
+        // Converte o arquivo txt de SP em um Lote RPS xml
+        LoteRpsSp loteRpsSp = LoteRpsSp.fromTxtFile(mainModel.getArquivoLoteSp());
+        LoteRps loteRps = LoteRps.fromLoteRpsSp(loteRpsSp);
+        loteRps.setNumeroLote(mainModel.getNroLote());
+        return loteRps;
     }
 
-    private void convertLoteRpsToXml(EnviarLoteRps loteRps) {
+    private String convertLoteRpsToXml(LoteRps loteRps) throws JAXBException {
+        // Cria o arquivo XML do Lote RPS
+        EnviarLoteRps enviarLoteRps = new EnviarLoteRps();
+        enviarLoteRps.setLoteRps(loteRps);
+
         StringWriter stringWriter = new StringWriter();
-        BigInteger nroLote = loteRps.getLoteRps().getNumeroLote();
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(EnviarLoteRps.class);
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        JAXBContext jaxbContext = JAXBContext.newInstance(EnviarLoteRps.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            jaxbMarshaller.marshal(loteRps, new File("src/main/resources/LoteRps_" + nroLote + ".xml"));
-//            jaxbMarshaller.marshal(loteRps, stringWriter);
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        }
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        jaxbMarshaller.marshal(enviarLoteRps, stringWriter);
+
+        return stringWriter.toString();
     }
 
-    // Add more controller methods as needed
+    private void signLoteRps(String xmlFile) throws Exception {
+        // Assina o XML com o certificado digital
+        CertificadoDigital certificado = mainModel.getCertificado();
+        AssinaturaDigital assinaturaDigital = new AssinaturaDigital(certificado);
+        String result = assinaturaDigital.assinarXML(xmlFile);
+
+
+        String outputPath = "Lote_" + mainModel.getNroLote() + ".xml";
+        try (PrintWriter writer = new PrintWriter(outputPath)) {
+            writer.println(result);
+        }
+    }
 }
