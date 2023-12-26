@@ -39,8 +39,8 @@ public class LoteRpsSp {
                     lote.setRodape(rodape);
                 }
             }
-        } catch (IOException e) {
-            throw e;
+        } catch (NumberFormatException e) {
+            throw new IOException();
         }
 
         return lote;
