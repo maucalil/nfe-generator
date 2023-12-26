@@ -1,8 +1,74 @@
-<EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#"><LoteRps Id="lote1_teste" versao="2.01"><NumeroLote>1</NumeroLote><CpfCnpj><Cnpj>44354456000125</Cnpj></CpfCnpj><InscricaoMunicipal>1902</InscricaoMunicipal><QuantidadeRps>1</QuantidadeRps><ListaRps><Rps><InfDeclaracaoPrestacaoServico Id="rps1_teste"><Rps><IdentificacaoRps><Numero>43</Numero><Serie>1</Serie><Tipo>1</Tipo></IdentificacaoRps><DataEmissao>2023-07-30</DataEmissao><Status>1</Status></Rps><Competencia>2023-07-30</Competencia><Servico><Valores><ValorServicos>48.00</ValorServicos><ValorDeducoes>0.00</ValorDeducoes><ValorPis>0.00</ValorPis><ValorCofins>0.00</ValorCofins><ValorInss>0.00</ValorInss><ValorIr>0.00</ValorIr><ValorCsll>0.00</ValorCsll><Aliquota>2.00</Aliquota></Valores><IssRetido>2</IssRetido><ItemListaServico>1005</ItemListaServico><Discriminacao>CNAE 6821802- corretagem no aluguel de im¢veis|Valor aproximado dos Tributos R$ 2.88   (6.00%)</Discriminacao><CodigoMunicipio>3540200</CodigoMunicipio><ExigibilidadeISS>1</ExigibilidadeISS></Servico><Prestador><CpfCnpj><Cnpj>44354456000125</Cnpj></CpfCnpj><InscricaoMunicipal>1902</InscricaoMunicipal></Prestador><Tomador><IdentificacaoTomador><CpfCnpj><Cpf>05666511815</Cpf></CpfCnpj><InscricaoMunicipal>00000000</InscricaoMunicipal></IdentificacaoTomador><RazaoSocial>ANTONIO FERNANDO FAVARETTO</RazaoSocial><Endereco><Endereco>R SEBASTIAO SAMPAIO </Endereco><Numero>273</Numero><Bairro>B CINCO DE DEZEMBRO</Bairro><Uf>SP</Uf><Cep>14169200</Cep></Endereco><Contato/></Tomador><OptanteSimplesNacional>1</OptanteSimplesNacional><IncentivoFiscal>2</IncentivoFiscal></InfDeclaracaoPrestacaoServico><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#rps1_teste"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>Hd9mA9PQOjoQIF4FiEQqXiYJRwg=</DigestValue></Reference></SignedInfo><SignatureValue>KgJNZ7g4oFoeJ6Kvf5dfXKN/aC9jmbzTk8X5mT85iIzXnW4MpF2ibddh5yqQupEi3ulvjDA3c5bK&#13;
-buuJ2TjUE9z6AD7g0L/fGwFsP9Oj79WuI02GY7RImxEkUpEjOOQtLjBC7iuTmRDNCwvRzOPfw1Kn&#13;
-cGo6hrJmjYwgLFIYa+M6bE4blKvwsU2UfEXt5yz4mxexSIlVUgoK5KyIn4nQMmNwf5IVBoZjl/2k&#13;
-4xggRonGLSs2HPYQkmeq+enjJ9GDL0IIUyqdVioFWhMQezmC0RqBLOt1xruYADI8N1EqygfpyjXr&#13;
-3kODmRB80uX2skzjUfkovYXtq4+HwzzWJtfa9Q==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIH/DCCBeSgAwIBAgIIMdEj9pwRDBIwDQYJKoZIhvcNAQELBQAwdDELMAkGA1UEBhMCQlIxEzAR&#13;
+<EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
+    <LoteRps Id="lote1" versao="2.01">
+        <NumeroLote>1</NumeroLote>
+        <CpfCnpj>
+            <Cnpj>01001001000113</Cnpj>
+        </CpfCnpj>
+        <InscricaoMunicipal>15000</InscricaoMunicipal>
+        <QuantidadeRps>1</QuantidadeRps>
+        <ListaRps>
+            <Rps>
+                <InfDeclaracaoPrestacaoServico Id="rps18743">
+                    <Rps>
+                        <IdentificacaoRps>
+                            <Numero>18743</Numero>
+                            <Serie>1</Serie>
+                            <Tipo>1</Tipo>
+                        </IdentificacaoRps>
+                        <DataEmissao>2023-12-19</DataEmissao>
+                        <Status>1</Status>
+                    </Rps>
+                    <Competencia>2023-12-19</Competencia>
+                    <Servico>
+                        <Valores>
+                            <ValorServicos>48.00</ValorServicos>
+                            <ValorDeducoes>0.00</ValorDeducoes>
+                            <ValorPis>0.00</ValorPis>
+                            <ValorCofins>0.00</ValorCofins>
+                            <ValorInss>0.00</ValorInss>
+                            <ValorIr>0.00</ValorIr>
+                            <ValorCsll>0.00</ValorCsll>
+                            <Aliquota>2.00</Aliquota>
+                        </Valores>
+                        <IssRetido>2</IssRetido>
+                        <ItemListaServico>01.05</ItemListaServico>
+                        <Discriminacao>CNAE 6821802- corretagem no aluguel de im¢veis|Valor aproximado dos Tributos R$ 2.88   (6.00%)</Discriminacao>
+                        <CodigoMunicipio>3540200</CodigoMunicipio>
+                        <CodigoPais>1058</CodigoPais>
+                        <ExigibilidadeISS>1</ExigibilidadeISS>
+                    </Servico>
+                    <Prestador>
+                        <CpfCnpj>
+                            <Cnpj>01001001000113</Cnpj>
+                        </CpfCnpj>
+                        <InscricaoMunicipal>15000</InscricaoMunicipal>
+                    </Prestador>
+                    <Tomador>
+                        <IdentificacaoTomador>
+                            <CpfCnpj>
+<Cpf>05666511815</Cpf>
+                            </CpfCnpj>
+                            <InscricaoMunicipal>00000000</InscricaoMunicipal>
+                        </IdentificacaoTomador>
+                        <RazaoSocial>TESTE INTEGRACAO</RazaoSocial>
+                        <Endereco>
+                            <Endereco>R SEBASTIAO SAMPAIO </Endereco>
+                            <Numero>273</Numero>
+                            <Bairro>B CINCO DE DEZEMBRO</Bairro>
+                            <CodigoMunicipio>3551702</CodigoMunicipio>
+                            <Uf>SP</Uf>
+                            <Cep>14169200</Cep>
+                        </Endereco>
+                        <Contato/>
+                    </Tomador>
+                    <OptanteSimplesNacional>2</OptanteSimplesNacional>
+                    <IncentivoFiscal>2</IncentivoFiscal>
+                </InfDeclaracaoPrestacaoServico>
+            <Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#rps18743"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>8AiPyZY+eLZhpFaGHs0BZWYgO8E=</DigestValue></Reference></SignedInfo><SignatureValue>Yb2JZZ8xD2t1kHF9CLYZTIzRWFE2gUSVPWvuMSlB8IkmlcQ71m1BK93CQ/C8xXVrFzEW5RS42b0O&#13;
+OjMv7x4lSSYu8MXVtItrkNZmaIhNdUmyzDL53yY+bNKsltLMoMOD7XHHqtDs4kWRa4Sygmyou82Q&#13;
+8TyV2XROs0oPmnnL4Ay4Bh0qXUnTVvi0LH5g+o/Bj+YLyO0xUeuF+HYyk2bpBPh8vPpeKy5CcruF&#13;
+aA/9EMlLTNj8xp0IMh1VHjjhwqpsUoiHXbm9iZpxqObKnLgOQ9q2l3FkZu5C+32VQ9y11HrtFBf9&#13;
+JbCYybXTCkilw70qlmbBrfxGKx/TvO+S00YyiQ==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIH/DCCBeSgAwIBAgIIMdEj9pwRDBIwDQYJKoZIhvcNAQELBQAwdDELMAkGA1UEBhMCQlIxEzAR&#13;
 BgNVBAoTCklDUC1CcmFzaWwxNjA0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFs&#13;
 IGRvIEJyYXNpbCAtIFJGQjEYMBYGA1UEAxMPQUMgVkFMSUQgUkZCIHY1MB4XDTIxMTIxNDEyMzAx&#13;
 NFoXDTI0MTIxMzEyMzAxNFowggETMQswCQYDVQQGEwJCUjELMAkGA1UECBMCU1AxDzANBgNVBAcT&#13;
@@ -37,11 +103,14 @@ D0U8+S/+CmNLXiqQinscD+G3ruj0WnniNCpuupQbwRqgOZ+lz5WHzP2TkmP6yJbz0b46iUCtRAJ5&#13
 GkKBVAKWskCIrqHt6JvuvGpIxlnNPPaTbpnehPR2ok2BfCdeUyjZ6Qmthbv+hVUbR7lT7RrDhevb&#13;
 ETBrCF5et3MxHWZB3cecDxLPTk8u6R2lA67VRdlAWAdmeQynmQRICmwUUAk5/RQ4MP6Ki77oeIE3&#13;
 hmPn82yyFqi9fLEo29beI6nK7o2WfgR35GIOcjKi9PTRV3muFQV/cmDI3tIyAk1xsLDxYLpOONA8&#13;
-XH/U5WDoTu1qtn6ytEOhOEJboWSvmbNcHPdpSIrf5/kteZ+h1oyzDYs4zeqCu/xe4Il6SIM=</X509Certificate></X509Data></KeyInfo></Signature></Rps></ListaRps></LoteRps><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#lote1_teste"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>KZqe2yOguS+fo5p7omuHOIMfb+E=</DigestValue></Reference></SignedInfo><SignatureValue>Cns8aqHISwrHAXUHBrXTrWdY2W9nf/MUK2EEUcbU7ghxerrj7Dafxv7OKDLMdZLpFk9EYkmBfiDK&#13;
-kszhSJmzmrS2hVF6baoo11tkGxlAFOaHqP+VTFIUuAz5jjP/iwJL33oajFYkdBPSMMkiPlHC96AM&#13;
-5GFQzgoBnvKfPN6vkVUVRYAeoBdWD0O0rCyk/3oJWtHrIw6FXK96WG9FaRmJ8sYg7SCabVb4dz9/&#13;
-LIHVJEqIVg1fsWYkb0qFE8zXrDbPhHJK3sazQuQ/pQvHQEOehFMJC4TKbGASE/lAneehO/uqoUlm&#13;
-rYuSa0tnhRvYDglcM8DIBac0HMiI9GTkXfK2UA==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIH/DCCBeSgAwIBAgIIMdEj9pwRDBIwDQYJKoZIhvcNAQELBQAwdDELMAkGA1UEBhMCQlIxEzAR&#13;
+XH/U5WDoTu1qtn6ytEOhOEJboWSvmbNcHPdpSIrf5/kteZ+h1oyzDYs4zeqCu/xe4Il6SIM=</X509Certificate></X509Data></KeyInfo></Signature></Rps>
+        </ListaRps>
+    </LoteRps>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#lote1"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>GeskuMpYiVKiRrggiVWXwCCcYO8=</DigestValue></Reference></SignedInfo><SignatureValue>QWwKaePHwz2pNnZQXuMg7oHOALgcC3VLQtDwZ+GQai2zzTDAh56h2iaNnAfye2ER+5O2ue1HfGlH&#13;
+hrgF5SP1HqoWuO5SYf3oXLACA8fHEC7qVQ01K8HbX4EjLSuzYNwmAIn7zjQCFnu7QCp9F/LD82NA&#13;
+hdGJhCpZgWsRxJE0FAfLNKGKQa0h7ukyKB3pA/FjbdnzqLbDsIOVjq5o3MAsAwP5GEHvwhfwKOud&#13;
+9dbwzKH85WZDABJjvJYRY64YqHG+s75Z7jhluwJYV1vM3GPJSx9rFFZ3ss2+rBR+bugZ+iwfJNgc&#13;
+huyI2H9KrDkMMGlXyEDy9FMLN8bObp7rbjsy6Q==</SignatureValue><KeyInfo><X509Data><X509Certificate>MIIH/DCCBeSgAwIBAgIIMdEj9pwRDBIwDQYJKoZIhvcNAQELBQAwdDELMAkGA1UEBhMCQlIxEzAR&#13;
 BgNVBAoTCklDUC1CcmFzaWwxNjA0BgNVBAsTLVNlY3JldGFyaWEgZGEgUmVjZWl0YSBGZWRlcmFs&#13;
 IGRvIEJyYXNpbCAtIFJGQjEYMBYGA1UEAxMPQUMgVkFMSUQgUkZCIHY1MB4XDTIxMTIxNDEyMzAx&#13;
 NFoXDTI0MTIxMzEyMzAxNFowggETMQswCQYDVQQGEwJCUjELMAkGA1UECBMCU1AxDzANBgNVBAcT&#13;

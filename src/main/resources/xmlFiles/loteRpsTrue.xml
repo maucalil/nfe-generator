@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <EnviarLoteRpsSincronoEnvio xmlns="http://www.abrasf.org.br/nfse.xsd" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#">
     <LoteRps Id="lote1" versao="2.01">
-        <NumeroLote>1</NumeroLote>
+        <NumeroLote>58907</NumeroLote>
         <CpfCnpj>
             <Cnpj>01001001000113</Cnpj>
         </CpfCnpj>
@@ -9,10 +9,10 @@
         <QuantidadeRps>1</QuantidadeRps>
         <ListaRps>
             <Rps>
-                <InfDeclaracaoPrestacaoServico Id="rps18743">
+                <InfDeclaracaoPrestacaoServico Id="18800">
                     <Rps>
                         <IdentificacaoRps>
-                            <Numero>18743</Numero>
+                            <Numero>18800</Numero>
                             <Serie>1</Serie>
                             <Tipo>1</Tipo>
                         </IdentificacaoRps>
@@ -51,12 +51,12 @@
                             </CpfCnpj>
                             <InscricaoMunicipal>00000000</InscricaoMunicipal>
                         </IdentificacaoTomador>
-                        <RazaoSocial>TESTE INTEGRACAO</RazaoSocial>
+                        <RazaoSocial>ANTONIO FERNANDO FAVARETTO</RazaoSocial>
                         <Endereco>
                             <Endereco>R SEBASTIAO SAMPAIO </Endereco>
                             <Numero>273</Numero>
                             <Bairro>B CINCO DE DEZEMBRO</Bairro>
-                            <CodigoMunicipio>3551702</CodigoMunicipio>
+                            <CodigoMunicipio>3540200</CodigoMunicipio>
                             <Uf>SP</Uf>
                             <Cep>14169200</Cep>
                         </Endereco>
