@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 @Getter
 @Setter
@@ -23,6 +24,7 @@ public class MainView extends JFrame {
     private JTextField nroLote;
     private JButton logoBtn;
     private JLabel fileChooserLabel;
+    private JCheckBox withSignature;
 
     public MainView() {
         init();
@@ -70,5 +72,28 @@ public class MainView extends JFrame {
 
         // Other configs
         fileChooser = new JFileChooser();
+        addListeners();
+    }
+
+    private void addListeners() {
+        withSignature.addActionListener(e -> {
+            if (withSignature.isSelected()) {
+                certificadoChooser.setEnabled(true);
+                certificadoPassword.setEnabled(true);
+            } else {
+                certificadoChooser.setEnabled(false);
+                certificadoPassword.setEnabled(false);
+            }
+        });
+
+        fileChooserBtn.addActionListener(e -> {
+            fileChooser.setCurrentDirectory(new File("."));
+            fileChooser.showDialog(null, null);
+
+            File fileChosen = fileChooser.getSelectedFile();
+            if (fileChosen != null) {
+                fileChooserLabel.setText("   " + fileChosen.getName());
+            }
+        });
     }
 }

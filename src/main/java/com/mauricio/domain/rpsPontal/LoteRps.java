@@ -49,7 +49,7 @@ public class LoteRps {
     @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
     private String versao;
 
-    public static LoteRps fromLoteRpsSp(LoteRpsSp loteRpsSp) {
+    public static LoteRps fromLoteRpsSp(LoteRpsSp loteRpsSp, BigInteger nroLote) {
         String inscricaoMuncipal = loteRpsSp.getCabecalho().getInscricaoMunicipalPrestador();
         int quantidadeRps = loteRpsSp.getRodape().getQntLinhaDetalhes();
 
@@ -57,8 +57,8 @@ public class LoteRps {
         ListaRps listaRps = ListaRps.fromSpModel(loteRpsSp.getRpsList());
 
         LoteRps loteRps = new LoteRps();
-        loteRps.setNumeroLote(BigInteger.ONE); // TODO fix numeroLote
         loteRps.setCpfCnpj(cnpj);
+        loteRps.setNumeroLote(nroLote);
         loteRps.setInscricaoMunicipal(inscricaoMuncipal);
         loteRps.setQuantidadeRps(quantidadeRps);
         loteRps.setListaRps(listaRps);

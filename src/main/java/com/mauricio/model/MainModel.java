@@ -13,5 +13,6 @@ public class MainModel {
     private CertificadoDigital certificado;
     private BigInteger nroLote;
     private String arquivoLoteSp;
+    private Boolean comAssinatura;
     private Enumeration<String> aliases;
 }

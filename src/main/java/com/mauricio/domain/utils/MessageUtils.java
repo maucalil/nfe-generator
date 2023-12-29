@@ -9,5 +9,5 @@ public class MessageUtils {
     public static final String E_FORMULARIO_INCOMPLETO = "Preencha todos os campos do formulário.";
     public static final String E_ARQUIVO_BAZEVANI = "Erro na leitura/estrutura do arquivo de texto gerado pelo Bazevani.";
     public static final String E_ASSINAR_ARQUIVO_LOTE = "Erro ao assinar arquivo de lote. Verifique se o cartão do certificado digital está conectado.";
-    public static final String E_ESCREVER_ARQUIVO_ASSINADO = "Erro ao gerar arquivo de lote assinado.";
+    public static final String E_GERAR_ARQUIVO_LOTE = "Erro ao gerar arquivo de lote.";
 }
