@@ -39,11 +39,12 @@ public class MainController {
         try {
             // Atualiza o modelo com os dados do formulário
             updateModel();
+            String outputDir = getOutputFileDirectory();
 
             // Converte o arquivo txt de SP em um Lote RPS xml
             LoteRps loteRps = getLoteRps();
             String xmlFileStr = convertLoteRpsToXml(loteRps);
-            String xmlOutputPath = "src/main/resources/Lote_" + mainModel.getNroLote() + ".xml";
+            String xmlOutputPath = outputDir + "/Lote_" + mainModel.getNroLote() + ".xml";
 
             // Assina o arquivo XML
             if (mainModel.getComAssinatura()) {
@@ -118,6 +119,18 @@ public class MainController {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(MessageUtils.E_TIPO_NRO_LOTE);
         }
+    }
+
+    private String getOutputFileDirectory() throws IllegalArgumentException {
+        JFileChooser dirChooser = new JFileChooser();
+        dirChooser.setCurrentDirectory(new File("."));
+        dirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        dirChooser.setAcceptAllFileFilterUsed(false);
+        if (dirChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            return dirChooser.getSelectedFile().getPath();
+        }
+
+        throw new IllegalArgumentException(MessageUtils.E_DIR_NAO_SELECIONADO);
     }
 
     private LoteRps getLoteRps() throws IOException {
