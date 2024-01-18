@@ -12,8 +12,8 @@ public class ConstantUtils {
     // Dados RPS
     public  static final String CODIGO_LOCACAO_OU_VENDA = "10.05";
     public static final String CODIGO_AVALIACAO = "28.01";
-//    public static final String CNPJ_IMOBILIARIA = "44354456000125";
-//    public static final String INSCRICAO_MUNICIPAL = "1902";
+    public static final String CNPJ_IMOBILIARIA = "44354456000125";
+    public static final String INSCRICAO_MUNICIPAL = "1902";
     public static final String VERSAO_LOTE_RPS = "2.01";
 
     // Assinatura
@@ -22,6 +22,6 @@ public class ConstantUtils {
     public static final String[] ELEMENTOS_ASSINAVEIS = new String[] {"LoteRps"};
 
     // Homologacao
-    public static final String CNPJ_IMOBILIARIA = "01001001000113";
-    public static final String INSCRICAO_MUNICIPAL = "15000";
+//    public static final String CNPJ_IMOBILIARIA = "01001001000113";
+//    public static final String INSCRICAO_MUNICIPAL = "15000";
 }
