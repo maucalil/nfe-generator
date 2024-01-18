@@ -48,6 +48,7 @@ public class MainView extends JFrame {
     private void init() {
         // Main panel config
         setTitle("Clara Imóveis - Gerenciamento de NF-e");
+        setIconImage(Toolkit.getDefaultToolkit().getImage("src/main/resources/icons/nfe.png"));
         setSize(new Dimension(1280, 720));
         setResizable(false);
         setLocationRelativeTo(null);
