@@ -21,6 +21,8 @@ public class ConstantUtils {
     public static final String INF_DECLARACAO_PRESTACAO_SERVICO = "InfDeclaracaoPrestacaoServico";
     public static final String[] ELEMENTOS_ASSINAVEIS = new String[] {"LoteRps"};
 
+    public static final String LOCBAZE_DIR = "C:/Bazevani/Locbaze/notas";
+
     // Homologacao
 //    public static final String CNPJ_IMOBILIARIA = "01001001000113";
 //    public static final String INSCRICAO_MUNICIPAL = "15000";

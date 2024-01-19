@@ -5,6 +5,7 @@ import com.mauricio.domain.assinatura.CertificadoDigital;
 import com.mauricio.domain.rpsPontal.EnviarLoteRps;
 import com.mauricio.domain.rpsPontal.LoteRps;
 import com.mauricio.domain.rpsSP.LoteRpsSp;
+import com.mauricio.domain.utils.ConstantUtils;
 import com.mauricio.domain.utils.MessageUtils;
 import com.mauricio.model.MainModel;
 import com.mauricio.view.MainView;
@@ -123,7 +124,7 @@ public class MainController {
 
     private String getOutputFileDirectory() throws IllegalArgumentException {
         JFileChooser dirChooser = new JFileChooser();
-        dirChooser.setCurrentDirectory(new File("."));
+        dirChooser.setCurrentDirectory(new File(ConstantUtils.LOCBAZE_DIR + "/NF-e LOTES ENVIAR PREFEITURA"));
         dirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         dirChooser.setAcceptAllFileFilterUsed(false);
         if (dirChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {

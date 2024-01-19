@@ -2,10 +2,12 @@ package com.mauricio.view;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.mauricio.domain.utils.ConstantUtils;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.io.File;
 
@@ -88,7 +90,10 @@ public class MainView extends JFrame {
         });
 
         fileChooserBtn.addActionListener(e -> {
-            fileChooser.setCurrentDirectory(new File("."));
+            fileChooser.setCurrentDirectory(new File(ConstantUtils.LOCBAZE_DIR));
+
+            FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("Text Files (*.txt)", "txt");
+            fileChooser.setFileFilter(txtFilter);
             fileChooser.showDialog(null, null);
 
             File fileChosen = fileChooser.getSelectedFile();
