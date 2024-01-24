@@ -90,9 +90,13 @@ public class MainView extends JFrame {
         });
 
         fileChooserBtn.addActionListener(e -> {
-            fileChooser.setCurrentDirectory(new File(ConstantUtils.LOCBAZE_DIR));
-
+            File baseDirectory = new File(ConstantUtils.LOCBAZE_DIR);
+            if (!baseDirectory.exists()) {
+                baseDirectory = new File("C:/");
+            }
             FileNameExtensionFilter txtFilter = new FileNameExtensionFilter("Text Files (*.txt)", "txt");
+
+            fileChooser.setCurrentDirectory(baseDirectory);
             fileChooser.setFileFilter(txtFilter);
             fileChooser.showDialog(null, null);
 

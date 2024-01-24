@@ -124,7 +124,13 @@ public class MainController {
 
     private String getOutputFileDirectory() throws IllegalArgumentException {
         JFileChooser dirChooser = new JFileChooser();
-        dirChooser.setCurrentDirectory(new File(ConstantUtils.LOCBAZE_DIR + "/NF-e LOTES ENVIAR PREFEITURA"));
+
+        File baseDirectory = new File(ConstantUtils.LOCBAZE_DIR + "/NF-e LOTES ENVIAR PREFEITURA");
+        if (!baseDirectory.exists()) {
+            baseDirectory = new File("C:/");
+        }
+
+        dirChooser.setCurrentDirectory(baseDirectory);
         dirChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         dirChooser.setAcceptAllFileFilterUsed(false);
         if (dirChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
