@@ -2,6 +2,7 @@ package com.mauricio.domain.rpsPontal;
 
 import com.mauricio.domain.enums.ExigibilidadeIss;
 import com.mauricio.domain.enums.IssRetido;
+import com.mauricio.domain.enums.ResponsavelRetencao;
 import com.mauricio.domain.enums.SimNao;
 import com.mauricio.domain.rpsSP.DadosServicoSp;
 import com.mauricio.domain.utils.ConstantUtils;
@@ -39,7 +40,7 @@ public class DadosServico {
     protected SimNao issRetido;
 
     @XmlElement(name = "ResponsavelRetencao")
-    protected Byte responsavelRetencao; // TODO remover? aparece só se issRetido for SIM (1)
+    protected ResponsavelRetencao responsavelRetencao; // obrigatório se issRetido for SIM (1)
 
     @XmlElement(name = "ItemListaServico", required = true)
     protected String itemListaServico;
@@ -69,16 +70,18 @@ public class DadosServico {
     protected String numeroProcesso; //  TODO remover?
 
     public static DadosServico fromSpModel(DadosServicoSp dadosServicoSp) {
+        DadosServico dadosServico = new DadosServico();
         SimNao issRetido;
+
         if (dadosServicoSp.getIssRetido() == IssRetido.TOMADOR) {
             issRetido = SimNao.SIM;
+            dadosServico.setResponsavelRetencao(ResponsavelRetencao.TOMADOR);
         } else {
             issRetido = SimNao.NAO;
         }
 
         ValoresDeclaracaoServico valores = ValoresDeclaracaoServico.fromSpModel(dadosServicoSp.getValoresServico());
 
-        DadosServico dadosServico = new DadosServico();
         dadosServico.setValores(valores);
         dadosServico.setIssRetido(issRetido);
         dadosServico.setDiscriminacao(dadosServicoSp.getDiscriminacao());
