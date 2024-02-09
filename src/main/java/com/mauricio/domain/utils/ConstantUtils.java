@@ -22,7 +22,7 @@ public class ConstantUtils {
     public static final String[] ELEMENTOS_ASSINAVEIS = new String[] {"LoteRps"};
 
     public static final String LOCBAZE_DIR_C = "C:/Bazevani/Locbaze/notas";
-    public static final String LOCBAZE_DIR_B = "B:/Bazevani/Locbaze/notas";
+    public static final String LOCBAZE_DIR_B = "B:/Locbaze/notas";
 
     // Homologacao
 //    public static final String CNPJ_IMOBILIARIA = "01001001000113";
