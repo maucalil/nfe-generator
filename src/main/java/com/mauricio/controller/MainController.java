@@ -18,6 +18,7 @@ import java.io.*;
 import java.math.BigInteger;
 import java.security.*;
 import java.security.cert.CertificateException;
+import java.text.Normalizer;
 import java.util.Enumeration;
 
 public class MainController {
@@ -45,6 +46,7 @@ public class MainController {
             // Converte o arquivo txt de SP em um Lote RPS xml
             LoteRps loteRps = getLoteRps();
             String xmlFileStr = convertLoteRpsToXml(loteRps);
+            xmlFileStr = removeAcentos(xmlFileStr);
             String xmlOutputPath = outputDir + "/Lote_" + mainModel.getNroLote() + ".xml";
 
             // Assina o arquivo XML
@@ -158,6 +160,12 @@ public class MainController {
         jaxbMarshaller.marshal(enviarLoteRps, stringWriter);
 
         return stringWriter.toString();
+    }
+
+    private String removeAcentos(String str) {
+        CharSequence cs = new StringBuilder(str == null ? "" : str);
+        return Normalizer.normalize(cs, Normalizer.Form.NFKD)
+                .replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 
     private String signLoteRps(String xmlFile) throws Exception {
