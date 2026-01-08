@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Users\mauricio-pc\GitHub\nfe-generator\target\nfe-generator-1.0-SNAPSHOT-jar-with-dependencies.jar</jar>
+  <outfile>C:\Users\mauricio-pc\GitHub\nfe-generator\target\ClaraImoveis_NFE.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>true</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\mauricio-pc\GitHub\nfe-generator\src\main\resources\icons\nfe.ico</icon>
+  <singleInstance>
+    <mutexName>ClaraImoveis_NFE.exe</mutexName>
+    <windowTitle>ClaraImoveis_NFE</windowTitle>
+  </singleInstance>
+  <jre>
+    <path>JRE</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+  </jre>
+</launch4jConfig>
