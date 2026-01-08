@@ -10,7 +10,7 @@ public class ConstantUtils {
     public static final String CODIGO_PAIS_IBGE = "1058";
 
     // Dados RPS
-    public  static final String CODIGO_LOCACAO_OU_VENDA = "10.05";
+    public  static final String CODIGO_LOCACAO_OU_VENDA = "100501";
     public static final String CODIGO_AVALIACAO = "28.01";
     public static final String CNPJ_IMOBILIARIA = "44354456000125";
     public static final String INSCRICAO_MUNICIPAL = "1902";
